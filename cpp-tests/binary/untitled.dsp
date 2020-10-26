@@ -1,3 +1,5 @@
+declare filename "untitled.dsp"; declare name "untitled"; 
+ 
 import("stdfaust.lib");
 
 
@@ -18,7 +20,7 @@ case{
 
 resistor_output = 
 case{
-    (0, R) => 0, _*.5; //a0 in, b0 out
+    (0, R) => 0, _; //a0 in, b0 out
     (1, R) => _, !; //b0 passthru
     (2, R) => R0 //port resistance. may replace this with dynamic allocation for port resistances. 
     with{
@@ -27,7 +29,6 @@ case{
 };
 
 
-u_resistor(r, a0, r0) = *(r-r0)/(r+r0); 
 
 //capacitors made with BLT
 
@@ -41,56 +42,8 @@ case{
     };
 };
 
-capacitor_output = 
-case{
-    (0, R) => b0
-    with{
-        b0(a1) =  a1*1, a1*.5 + (a1')*.5; 
-    };
-    (1, R) => _, !; 
-    (2, R) => R0
-    with {
-        R0 = t/(2*R); 
-    };
-};
-
-//inductors made with BLT
-inductor =
-case{
-    (0, R) => _*(-1); 
-    (1, R) => _; 
-    (2, R) => R0
-    with {
-        R0 = t/(2*R); 
-    };
-};
-
-inductor_output = 
-case{
-    (0, R) => b0
-    with{
-        b0(a1) = a1*(-1), a1*.5 - (a1')*.5; 
-    };
-    (1, R) => _, !; 
-    (2, R) => R0
-    with {
-        R0 = t/(2*R); 
-    };
-};
-
 //resistive voltage sources
-//adapted
-resVoltage = 
-case{
-    (0, R, ein) => ein;
-    (1, R, ein) => _; 
-    (2, R, ein) => R0
-    with {
-        R0 = R; 
-    };
-}; 
 
-//unadapted
 u_resVoltage =
 case {
     (0, R, ein) => b0
@@ -101,28 +54,6 @@ case {
     (2, R, ein) => 0; 
 
 };
-//simple unadaptable elements. can only exist as root elements
-
-u_Voltage = 
-case{
-    (0 , ein) => b0
-    with{
-        b0(a0, R0) = 2*R0^(p-1) -a0;
-    };
-    (1, ein) => !, !; 
-    (2, ein) => 0; 
-};
-
-u_Current = 
-case{
-    (0 , ein) => b0
-    with{
-        b0(a0, R0) = 2*R0^(p) + a0;
-    };
-    (1, ein) => !, !; 
-    (2, ein) => 0; 
-};
-
 
 //3 port adaptors
 parallel= 
@@ -166,7 +97,6 @@ case{
     };
 };
 
-//constructor private functions
 
 addins = 
 case{
@@ -175,7 +105,6 @@ case{
 };
 
 //downtree constructor
-
 builddown(A: (As1, As2)) = ((_, _, _, upPortRes): A(0)), addins(inputs(builddown(As1), builddown(As2)) - 2 ) : crossover : builddown(As1), builddown(As2)
 with{
     crossover = _ , ro.cross1n(inputs(builddown(As1))-1), addins(inputs(builddown(As2))-1);
@@ -189,8 +118,6 @@ with{
 
 
 builddown(A) = A(0); 
-
-
 
 
 //uptree constructor
@@ -211,29 +138,24 @@ buildup(A) = A(1);
 
 //resistance contructor. 
 //maybe change this to a dynamic programming method as current method involves calculating port resistance for each element many times. 
-//getres(A : (As1, As2)) = (getres(As1) , getres(As2)) : A(2); 
+getres(A : (As1, As2)) = (getres(As1) , getres(As2)) : A(2); 
 
-getres(A: As) = parres(As) : A(2);
+getres(A: As) = getres(As) : A(2);
 
 getres(A) = A(2); 
 
-parres((Ap1, Ap2)) = getres(Ap1) , getres(Ap2);
-
-parres(Ap) = getres(Ap);
-
-//consider adding an output constructor. then could just do construct(tree)
+//consider adding an output constructor. then could just do construct(tree) 
 
 
 
 //set up our components which have inherent values
 vs1(x) = u_resVoltage(x, 100, no.pink_noise*.7);
 
-c1(x) = capacitor_output(x, 10*(10^-9)); 
+c1(x) = capacitor(x, 10*(10^-9)); 
 r1(x) = resistor_output(x, 4.7*10^3); 
 
 //an second order rc filter.
-tree2 = vs1 : (parallel : (series : (c1, r1)), (series : (c1, r1))); 
-tree1 = vs1 : (series : (c1, r1)); 
+tree2 = vs1 : (parallel : (series : c1, r1), (series : c1, r1)); 
 
-process = builddown(tree2)~buildup(tree2) : !, _, !, _, !, _ , !, _;
+process = builddown(tree2)~buildup(tree2) : _, !, _, _, !, _;
 
