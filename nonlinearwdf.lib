@@ -1,0 +1,106 @@
+import("stdfaust.lib");
+
+//ideal diode
+u_idealDiode =
+case{
+    (0) => b1
+    with{
+        b1(R1, a0) = a0 : abs : *(-1);
+    };
+    (1) => !, !; 
+    (2) => 0; 
+};
+
+//chua's diode, for use in chaotic oscillators
+//currently not behaving correctly
+u_chua = 
+case{
+    (0, G1, G2, V0) => b1
+    with{
+        b1(R1, a0) = g_1*a0 + 1/2*(g_2 - g_1)*(((a0 + a_0) : abs) - ((a0 - a_0): abs))
+        with{
+            g_1 = (1-G1*R1)/(1+G1*R1);
+            g_2 = (1-G2*R1)/(1+G2*R1);
+            a_0 = V0*(1+G2*R1);
+        };
+    };
+    (1, G1, G2, V0) => !, !; 
+    (2, G1, G2, V0) => 0; 
+};
+
+
+//simple diode pair as outlined in Werner
+//params: Is = saturation current, Vt = thermal voltage
+u_diode_pair = 
+case{
+    (0, Is, Vt) => b1
+    with{
+        b1(R1, a1) = a1 + 2*R1*Is - 2*Vt*lambert(R1*Is/Vt*(((a1+R1*Is)/Vt) : exp));
+    };
+    (1, Is, Vt) => !, !; 
+    (2, Is, Vt) => 0; 
+};
+
+//lambert function for use in diode calculation
+//adapted from  KM brigg's c++ function
+lambert(z) = ba.if((z<(-em1+.0001)), less_approx, greater_approx)
+with{
+    less_approx = -1.0
+     +2.331643981597124203363536062168*r
+     -1.812187885639363490240191647568*q
+     +1.936631114492359755363277457668*r*q
+     //-2.353551201881614516821543561516*q2
+    with{
+        q = z+em1;
+        r = sqrt(q);
+        //q2 = q*q; 
+    };
+    eps=4.0e-16; 
+    em1=0.3678794411714423215955237701614608;
+    greater_approx = z : init : seq(i, 5, approx)
+    with{
+        init(w) = ba.if((z<1), init1, init2)
+        with{
+            init1 = -1.0+p*(1.0+p*(-0.333333333333333333333+p*0.152777777777777777777777))
+            with{
+                p=sqrt(2.0*(2.7182818284590452353602874713526625*z+1.0));
+            };
+            init2 = log(abs(z));
+        };
+        approx(w) = w-t
+        with{
+            e=exp(w);
+            t=(w*e-z)/(e*p-.5*(p+1.0)*(w*e-z)/p);
+            p=w+1; 
+        };
+    };
+};
+
+//single diode as outlined in Werner
+u_diode_single = 
+case{
+    (0, Is, Vt) => b1
+    with{
+        b1(R1, a1) = ma.signum(a1)*( (a1 : abs) + 2*R1*Is - 2*Vt*(lambert(R1*Is/Vt*((((a1 : abs)+R1*Is)/Vt) : exp)) + lambert(-R1*Is/Vt*(((-1*(a1 : abs)+R1*Is)/Vt) : exp))));
+    };
+    (1, Is, Vt) => !, !; 
+    (2, Is, Vt) => 0; 
+};
+
+u_diode_antiparallel =
+case{
+    (0, Is, Vt, M, N) => b1
+    with{
+        b1(R1, a1) = a1 - 2*lam*Vt*(mu0* lambert((R1*Is)/(mu0*Vt) * exp((lam*a1)/(mu0*Vt))) + 
+                                    mu1* lambert((-R1*Is)/(mu1*Vt) * exp((-lam*a1)/(mu1*Vt))))
+        with{
+            lam = ma.signum(a1); 
+            mu0 = ba.if((a1 < 0), N, M);
+            mu1 = ba.if((a1 > 0), M, N);
+        };
+    };
+    (1, Is, Vt, M, N) => !, !; 
+    (2, Is, Vt, M, N) => 0; 
+};
+
+//process =  u_diode_antiparallel(0, 2.52*10^-9, 25.85*10-3, 1, 1); 

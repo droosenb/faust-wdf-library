@@ -64,7 +64,7 @@ f10(x, y) = switchfunct;
 
 f1 = _ , _ , _; 
 f2 = _, _, _; 
-crossover = _, ro.crossn1(2), _, _; 
+//crossover = _, ro.crossn1(2), _, _; 
 
 //casefucnt((Ap1, Ap2)) = Ap1(0) , Ap2(0); 
 funct5(switchfunct(x)) =  switchfunct(0, x);
@@ -74,6 +74,47 @@ funct5(switchfunct(x)) =  switchfunct(0, x);
     // crossover = _ , ro.cross1n(inputs(builddown{(As1))-1), addins(inputs(builddown(As2))-1);
 //     upPortRes = getres(As1), getres(As2);
 // };
+
+builddown(A : As) = ((addins(inputs(A(0)) - outputs(upPortRes))), upPortRes :  A(0)) , addins(inputs(pardown(As)) - outputs(A(0))) :  pardown(As)
+with{
+    pardown = 
+    case{
+        ((Ap1, Ap2)) => crossover : builddown(Ap1), builddown(Ap2)
+        with {
+            crossover = _ , ro.cross1n(inputs(builddown(Ap1))-1), addins(inputs(builddown(Ap2))-1);
+        };
+        (Ap) => builddown(Ap);
+    }; 
+    upPortRes = getres(As);
+};
+
+builddown(A) = A(0); 
+
+sign(x) = (x>0) + -1*(x<0);
+
+addins = 
+case{
+    (0) => 0 : !; 
+    (x) => si.bus(x);
+};
+
+//crossover.  feed a matrix with the dimensions of the buss. 
+crossover_5(inl) =  par(i, ba.count(inl), ba.selector((ba.subseq(inl, 0, i):> _)*ma.signum(i), (inl:> _))), par(i, ba.count(inl), (!, addins(ba.take(i+1, inl) - 1)));
+
+//split the first n signals from a bus size of s
+splitn(n, s) = (si.bus(n) <: si.bus(n), si.bus(n)), (addins(s-n));
+
+funct10 = 
+case{
+    (0) => 5;
+    (1) => 6; 
+    (2) => 7; 
+};
+
+givezero(f : x) = f(0) ;
+
+array1 = (funct10 : _), (funct10 : _), (funct10 : _);
+array2 = funct10, funct10, funct10; 
 
 builddown(A : As) = ((addins(inputs(A(0)) - outputs(upPortRes))), upPortRes :  A(0)) , addins(inputs(pardown(As)) - outputs(A(0))) :  pardown(As)
 with{
