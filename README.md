@@ -97,7 +97,7 @@ or more simply, using parentheses:
 
 `A : ((B : X), (C : (Y, Z)))`
 
-####Acknowledgements
+### Acknowledgements
 
 Many thanks to Kurt Werner for helping me to undersand wave digital filter models. Without his publications and consultations, the library would not exist. 
 Thanks also to my advisors, Rob Owen and Eli Stine who's input was critical to the development of the library.
