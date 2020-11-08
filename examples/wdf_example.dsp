@@ -1,7 +1,6 @@
 import("stdfaust.lib");
 
 wdf = library("waveDigitalFilters.lib");
-wnl = library("nonlinearwdf.lib");
 
 
 //TESTING SECTION. NOT PART OF FINAL LIB. 
@@ -39,7 +38,7 @@ c1(i) = wdf.capacitor_output(i, 5.5*10^(-9));
 r2(i) = wdf.resistor_output(i, 1.122*10^3);
 l3(i) = wdf.inductor_output(i, 7.07*10^(-3));
 c4(i) = wdf.capacitor_output(i, 49.5*10^(-9));
-d1(i) = wnl.u_chua(i, -500*10^-6, -800*10^-6, 1);
+d1(i) = wdf.u_chua(i, -500*10^-6, -800*10^-6, 1);
 vInject(i) = wdf.series_voltage(i, button("impulse")*5 : ba.impulsify);
 
 //input tree structure
