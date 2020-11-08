@@ -863,7 +863,7 @@ u_diodePair =
 case{
     (0, Is, Vt) => b1
     with{
-        b1(R1, a1) = a1 + 2*R1*Is - 2*Vt*lambert(R1*Is/Vt*(((a1+R1*Is)/Vt) : exp));
+        b1(R1, a1) = a1 + 2*R1*Is - 2*Vt*lambert((R1*Is/Vt*(((a1+R1*Is)/Vt), 3) : exp));
     };
     (1, Is, Vt) => !, !; 
     (2, Is, Vt) => 0; 
@@ -901,7 +901,7 @@ u_diodeSingle =
 case{
     (0, Is, Vt) => b1
     with{
-        b1(R1, a1) = ma.signum(a1)*( (a1 : abs) + 2*R1*Is - 2*Vt*(lambert(R1*Is/Vt*((((a1 : abs)+R1*Is)/Vt) : exp)) + lambert(-R1*Is/Vt*(((-1*(a1 : abs)+R1*Is)/Vt) : exp))));
+        b1(R1, a1) = ma.signum(a1)*( (a1 : abs) + 2*R1*Is - 2*Vt*(lambert((R1*Is/Vt*((((a1 : abs)+R1*Is)/Vt) : exp)),3) + lambert((-R1*Is/Vt*(((-1*(a1 : abs)+R1*Is)/Vt) : exp)),3)));
     };
     (1, Is, Vt) => !, !; 
     (2, Is, Vt) => 0; 
@@ -938,8 +938,8 @@ u_diodeAntiparallel =
 case{
     (0, Is, Vt, M, N) => b1
     with{
-        b1(R1, a1) = a1 - 2*lam*Vt*(mu0* lambert((R1*Is)/(mu0*Vt) * exp((lam*a1)/(mu0*Vt))) + 
-                                    mu1* lambert((-R1*Is)/(mu1*Vt) * exp((-lam*a1)/(mu1*Vt))))
+        b1(R1, a1) = a1 - 2*lam*Vt*(mu0* lambert(((R1*Is)/(mu0*Vt) * exp((lam*a1)/(mu0*Vt))), 3) + 
+                                    mu1* lambert(((-R1*Is)/(mu1*Vt) * exp((-lam*a1)/(mu1*Vt))), 3))
         with{
             lam = ma.signum(a1); 
             mu0 = ba.if((a1 < 0), N, M);
@@ -1536,7 +1536,7 @@ with{
 declare buildtree author "Dirk Roosenburg";
 declare buildtree copyright "Copyright (C) 2020 by Dirk Roosenburg <dirk.roosenburg.30@gmail.com>";
 declare buildtree license "MIT-style STK-4.3 license";
-buildtree(tree) = builddown(tree)~buildup(tree) : buildout(tree);
+buildtree((A : B)) = builddown(A : B)~buildup(A : B) : buildout(A : B);
 
 
 

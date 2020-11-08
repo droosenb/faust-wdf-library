@@ -1,6 +1,6 @@
 import("stdfaust.lib");
 
-wdf = library("waveDigitalFilters.lib");
+wdf = library("wavedigitalfilters.lib");
 
 vinA(i) = wdf.u_resVoltage(i, 1, _);
 c2(i) = wdf.capacitor(i, 1*10^-6);
@@ -19,7 +19,7 @@ stage_b = ((_, ro.crossn1(2)): wdf.builddown(tree_b))~wdf.buildup(tree_b) : !, !
 
 pot1 = hslider("distortion 0 - 500k", 250, 0, 500, .1);
 jinC(i) = wdf.resCurrent(i, 51*10^3+pot1*10^3, _);
-d1(i) = wdf.u_diode_antiparallel(i, 2.52*10^-9, 25.85*10^-3, 1, 1); 
+d1(i) = wdf.u_diodeAntiparallel(i, 2.52*10^-9, 25.85*10^-3, 1, 1); 
 c4(i) = wdf.capacitor_output(i, 41*10^-12);
 
 tree_c = d1 : wdf.parallel : (c4, jinC); 
