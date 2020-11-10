@@ -57,7 +57,7 @@ The series operator ` : ` is used to seperate parent and child elements. For exa
    B
 ```
 
-is repersented by
+is represented by
 
 `A : B` 
 
@@ -100,6 +100,6 @@ or more simply, using parentheses:
 ### Acknowledgements
 
 Many thanks to Kurt Werner for helping me to undersand wave digital filter models. Without his publications and consultations, the library would not exist. 
-Thanks also to my advisors, Rob Owen and Eli Stine who's input was critical to the development of the library.
+Thanks also to my advisors, Rob Owen and Eli Stine whose input was critical to the development of the library.
 Finally, thanks to Romain Michon, Stephan Letz, and the Faust slack for contributing to testing, development, and inspiration when creating the library. 
 
