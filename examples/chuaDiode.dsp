@@ -1,5 +1,5 @@
-//chua's diode circuit
-//original circuit featuring chua's diode taken from Kurt Werner thesis
+//Chua's diode circuit
+//original circuit featuring Chua's diode taken from Kurt Werner thesis
 //for reference, see 
 wdf = library("wavedigitalfilters.lib");
 import("stdfaust.lib");
@@ -10,7 +10,7 @@ r2(i) = wdf.resistor_output(i, 1.6*10^3); //resistance must be slightly higher t
 l3(i) = wdf.inductor_output(i, 7.07*10^(-3));
 c4(i) = wdf.capacitor_output(i, 49.5*10^(-9));
 d1(i) = wdf.u_chua(i, -500*10^-6, -800*10^-6, 1);
-//I've added a voltage injection for agitation purposes. the system will always intitalize with zeros, so adding an impulse will get oscillations started. 
+//I've added a voltage injection for agitation purposes. the system will always initialize with zeros, so adding an impulse will get oscillations started. 
 vInject(i) = wdf.series_voltage(i, button("impulse")*5 : ba.impulsify);
 
 //input tree structure

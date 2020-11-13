@@ -30,9 +30,9 @@ vsin(x) = wdf.u_voltage(x, _);
 tree2 = vsin: (wdf.series : (r1, (wdf.parallel : (c1, (wdf.series : (c2, r2))))));
 
 //finally, we must add a crossover to our feedforward function to access the voltage input. 
-//in order to access the internals of the feedforward, we use the seperate feedforward function `builddown`
+//in order to access the internals of the feedforward, we use the separate feedforward function `builddown`
 //in this case, our desired input is the third input of vsin, so we cross over the next 6 signals to access it
 order2_in = (_, ro.crossn1(6) : wdf.builddown(tree2))~wdf.buildup(tree2) : wdf.buildout(tree2); 
 
-//change process to `order2_in` to run the filter with avalible inputs
+//change process to `order2_in` to run the filter with available inputs
 process = order2_noise;
