@@ -4,8 +4,6 @@ This library is intended for use for creating Wave Digital Filter (WDF) based mo
 
 The library itself is written in Faust to maintain portability. 
 
-Currently the library is in the early testing stages. Eventually, I hope to integrate it into the Faust Libraries project. 
-
 This library is heavily based on Kurt Werner's Dissertation, "Virtual Analog Modeling of Audio Circuitry Using Wave Digital Filters." I have tried to maintain consistent notation between the adaptors appearing within thesis and my adaptor code. The majority of the adaptors found in chapter 1 and chapter 3 are currently supported. 
 
 For inquires about use of this library in a commercial product, please contact dirk [dot] roosenburg [dot] 30 [at] gmail [dot] com
@@ -16,7 +14,7 @@ Use of this library expects some level of familiarity with WDF techniques, espec
 
 ### Quick Start
 
-to get a quick overview of the library, start with the `secondOrderFilters.dsp` code found in `examples`. Make sure that the `wavedigitalfilters.lib` is within the compile path. This can be achieved within the [online Faust IDE](https://faustide.grame.fr/) by simply downloading and dragging in `wavedigitalfilters.lib` in addition to the example code.
+to get a quick overview of the library, start with the `secondOrderFilters.dsp` code found in `examples`. If using the [online Faust IDE](https://faustide.grame.fr/) just download and drag in the sample code. 
 
 ### A Simple RC Filter Model
 
@@ -37,13 +35,13 @@ Also note that we have chosen to declare a white noise function as the input to 
 
 Second, the declared components and interconnection/structural adaptors (i.e. series, parallel, etc) are arranged into the connection tree which is produced from performing WDF analysis on the modeled circuit. For example, to produce our first order RC lowpass circuit model, the following tree is declared: 
 
-`tree_lowpass = vs1(i) : wdf.series : (r1, c1)`
+`tree_lowpass = vs1(i) : wd.series : (r1, c1)`
 
 For more information on how to represent trees in Faust, see Trees in Faust. 
 
 Finally, the tree is built using the the `buildtree` function. To build and compute our first order RC lowpass circuit model, we use
 
-`process = buildtree(tree_lowpass);`
+`process = wd.buildtree(tree_lowpass);`
 
 More information about build functions, see Build Functions. 
 
@@ -208,7 +206,7 @@ Only the first case should contain computational information.
 
 ### How the Build Functions Work
 
-Expect this section to be added soon! It's currently in progress.
+Expect this section to be added soon! It's currently the subject of a paper which I hope to publish soon. The explanation involves the creation of a "meta-language" in Faust and is not within the scope of an introduction. 
 
 ## Acknowledgements
 

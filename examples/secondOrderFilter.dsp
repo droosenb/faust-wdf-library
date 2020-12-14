@@ -1,6 +1,6 @@
 import("stdfaust.lib");
 
-wdf = library("wavedigitalfilters.lib");
+wdf = library("wdmodels.lib");
 
 //second order rc filter with pink noise input
 

@@ -1,7 +1,8 @@
 //Chua's diode circuit
 //original circuit featuring Chua's diode taken from Kurt Werner thesis
-//for reference, see 
-wdf = library("wavedigitalfilters.lib");
+//for reference, see  Meerkotter and Scholz, "Digital Simulation of Nonlinear Circuits by Wave Digital Filter Principles"
+wdf = library("wdmodels.lib");
+
 import("stdfaust.lib");
 
 //create circuit components
