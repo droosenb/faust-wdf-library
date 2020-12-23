@@ -5,6 +5,28 @@ using Latexify;
 
 #Manual Model Test (See p. 77 of notebook)
 
+#simplify all elements of an array
+function simplifyArray(arr)
+    tmp = Array{Num, 2}(undef, size(arr)[1], size(arr)[2])
+    for i = 1:size(arr)[1]
+        for j = 1:size(arr)[2]
+            tmp[i,j] = simplify(arr[i,j]);
+        end
+    end
+    return tmp
+end
+
+#preform the same substitution on each element of an array an simplify
+function substituteArray(arr, subs)
+    tmp = Array{Num, 2}(undef, size(arr)[1], size(arr)[2])
+    for i = 1:size(arr)[1]
+        for j = 1:size(arr)[2]
+            tmp[i,j] = simplify(substitute(arr[i,j], subs));
+        end
+    end
+    return tmp
+end
+
 #returns respective matrix partition
 function d(U)
     return U[2: size(U)[1], 1:size(U)[2]]
@@ -52,22 +74,73 @@ function R_up(V)
     return sparse(R_down(V)')
 end
 
-@variables Vs[0:1, 0:1] St[0:2,0:2] Pb[0:2, 0:2] Sb[0:2, 0:2] R1 C1 R2 C2;
 
-Q = [[  R1  0;
-        0   C1]*d(Pb)   zeros(2, 3);
+#common adaptor declrations as found in Werner Dissertation
+@variables R_1, R_2, rho
 
-        zeros(2, 3)    [R2  0;
-                        0   C1]*d(Sb)]*R_down([3,3])*d(St, 4)
+S_series  = [0                  -R_1^(1-rho)/(R_1+R_2)^(1-rho)      -R_2^(1-rho)/(R_1+R_2)^(1-rho)
+            R_1^rho/(R_1+R_2)   R_2/(R_1+R_2)                       -R_1^rho*R_2^(1-rho)/(R_1+R_2)
+            -R_2^rho/(R_1+R_2)  -R_1^(1-rho)*R_2^rho/(R_1+R_2)      R_1/(R_1+R_2)]
 
-Qsimp = simplifyArray(Q)
-Qzero = substituteArray(Qsimp, Dict([R1 => 0, R2 => 0, C1 => 1, C2 => 1]))
+S_parallel = [0                                 R_2^(rho)/(R_1+R_2)^(rho)       R_1^(rho)/(R_1+R_2)^(rho)
+             R_2^(1-rho)/(R_1+R_2)^(1-rho)     -R_1/(R_1+R_2)                   R_1^rho*R_2^(1-rho)/(R_1+R_2)
+             R_1^(1-rho)/(R_1+R_2)^(1-rho)      R_1^(1-rho)*R_2^rho/(R_1+R_2)   -R_2/(R_1+R_2)]
+
+
+#simple model test, see p. 77
+# connection tree Vs : St : ((Pb : (R1, C1)), (Sb : (R2, C2)))
+@variables Vs St[0:2,0:2] Pb[0:2, 0:2] Sb[0:2, 0:2] R1 C1 R2 C2 Vin;
+
+@variables R_R1 R_R2 R_C1 R_C2;
+
+Sb = substituteArray(S_series, Dict([R_1 => R_R2, R_2 => R_C2, rho => 1]))
+Pb = substituteArray(S_parallel, Dict([R_1 => R_R1, R_2 => R_C1, rho => 1]))
+St = substituteArray(S_series, Dict([R_1 => 1/(1/R_R1+1/R_C1), R_2 => R_R2 + R_C2, rho => 1]))
+
+Vs = -1;
+
+Q = [[R1 0; 0 C2]*d(Pb)     zeros(2, 3);
+    zeros(2, 3)             [R2 0; 0 C2]*d(Sb)]  *R_down([3,3])*d(St, 4)
+
+
+Qzero = substituteArray(Q, Dict([R1 => 0, R2 => 0, C1 => 1, C2 => 1]))
 
 P = u(St, 4)*R_up([3,3])*[  u(Pb, 0)*[R1 0; 0 C1]         zeros(3, 2);
-                            zeros(3, 2 )     u(Sb, 0)*[R2  0; 0 C1]]
+                            zeros(3, 2 )     u(Sb, 0)*[R2  0; 0 C2]]
 
 Pzero = substituteArray(P, Dict([R1 => 0, R2 => 0, C1 => 1, C2 => 1]))
 
-U =
+U = [Vs             zeros(1, 6)
+     zeros(6, 1)    Diagonal(ones(6))]
 
-model = Qzero*U*Pzero
+A = simplifyArray(Qzero*U*Pzero)
+ins = [1/(1/R_R1+1/R_C1) + R_R2 + R_C2  zeros(1, 6)
+        zeros(6, 1)                     zeros(6, 6)]
+B = simplifyArray(Qzero*ins* [Vin; zeros(6, 1)])
+scatter = simplifyArray(model)
+
+simplify(scatter[2,2])
+
+#modified connection tree form
+# connection tree Vs : St : ((Pb : (C1, C2)), (Sb : (R1, R2)))
+Q = [[R1 0; 0 C2]*d(Pb)     zeros(2, 3);
+    zeros(2, 3)             [R1 0; 0 R2]*d(Sb)]  *R_down([3,3])*d(St, 4)
+
+
+Qzero = substituteArray(Q, Dict([R1 => 0, R2 => 0, C1 => 1, C2 => 1]))
+
+P = u(St, 4)*R_up([3,3])*[  u(Pb, 0)*[C1 0; 0 C2]         zeros(3, 2);
+                            zeros(3, 2 )     u(Sb, 0)*[R1  0; 0 R2]]
+
+Pzero = substituteArray(P, Dict([R1 => 0, R2 => 0, C1 => 1, C2 => 1]))
+
+U = [Vs             zeros(1, 6)
+     zeros(6, 1)    Diagonal(ones(6))]
+
+A = Qzero*U*Pzero
+ins = [1/(1/R_R1+1/R_C1) + R_R2 + R_C2  zeros(1, 6)
+        zeros(6, 1)                     zeros(6, 6)]
+B = simplifyArray(Qzero*ins* [Vs; zeros(6, 1)])
+scatter = simplifyArray(model)
+
+simplify(scatter[2,2])
