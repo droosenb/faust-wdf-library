@@ -1,7 +1,8 @@
-using ModelingToolkit;
+using Latexify;
+using LaTeXStrings;
 using LinearAlgebra;
 using SparseArrays;
-using Latexify;
+using ModelingToolkit;
 
 #Manual Model Test (See p. 77 of notebook)
 
@@ -26,6 +27,37 @@ function substituteArray(arr, subs)
     end
     return tmp
 end
+
+function pretty_array(A::Array{Num, 2}; kw...)
+    tmp = Array{Any, 2}(undef, size(A)[1], size(A)[2])
+    for i = 1:size(A)[1]
+        for j = 1:size(A)[2]
+            tmp[i,j] = pretty_expr(A[i,j]; kw...);
+        end
+    end
+    return tmp
+end
+
+# Some functions to cleanup equations to make latexify produce good results
+function pretty_expr end
+
+# single-argument
+pretty_expr(x; kw...) = x
+pretty_expr(s::Sym; kw...) = nameof(s)
+pretty_expr(f::Function; kw...) = nameof(f)
+pretty_expr(x::Num; kw...) = pretty_expr(toexpr(x); kw...)
+pretty_expr(ex::Expr; kw...) = Expr(ex.head, pretty_expr.(ex.args; kw...)...)
+pretty_expr(eq::Equation; kw...) = Expr(:(=), pretty_expr(eq.lhs; kw...), pretty_expr(eq.rhs; kw...))
+pretty_expr(f::Term; kw...) = pretty_expr(f.f, f.args; kw...)
+
+
+# double-argument
+pretty_expr(f, args; kw...) = Expr(:call, pretty_expr(f; kw...), pretty_expr.(args; kw...)...)
+pretty_expr(f::Function, args; kw...) = Expr(:call, nameof(f), pretty_expr.(args; kw...)...)
+
+pretty_expr(A::Array{Num, 2}; kw...) = pretty_array(A; kw...)
+
+
 
 #returns respective matrix partition
 function d(U)
@@ -89,7 +121,8 @@ S_parallel = [0                                 R_2^(rho)/(R_1+R_2)^(rho)       
 
 #simple model test, see p. 77
 # connection tree Vs : St : ((Pb : (R1, C1)), (Sb : (R2, C2)))
-@variables Vs St[0:2,0:2] Pb[0:2, 0:2] Sb[0:2, 0:2] R1 C1 R2 C2 Vin;
+@variables Vs St[0:2,0:2] Pb[0:2, 0:2] Sb[0:2, 0:2] R1 C1 R2 C2 V_in x y;
+@parameters n;
 
 @variables R_R1 R_R2 R_C1 R_C2;
 
@@ -113,34 +146,41 @@ Pzero = substituteArray(P, Dict([R1 => 0, R2 => 0, C1 => 1, C2 => 1]))
 U = [Vs             zeros(1, 6)
      zeros(6, 1)    Diagonal(ones(6))]
 
+#A
 A = simplifyArray(Qzero*U*Pzero)
+
 ins = [1/(1/R_R1+1/R_C1) + R_R2 + R_C2  zeros(1, 6)
         zeros(6, 1)                     zeros(6, 6)]
-B = simplifyArray(Qzero*ins* [Vin; zeros(6, 1)])
-scatter = simplifyArray(model)
+#B
+B = simplifyArray(Qzero*ins* [V_in; zeros(6, 1)])
 
-simplify(scatter[2,2])
 
+
+
+model = [ModelingToolkit.Equation(y, B)]
+println(latexify(pretty_expr(B)))
+#scatter = simplifyArray(model)
+#simplify(scatter[2,2])
 #modified connection tree form
 # connection tree Vs : St : ((Pb : (C1, C2)), (Sb : (R1, R2)))
-Q = [[R1 0; 0 C2]*d(Pb)     zeros(2, 3);
-    zeros(2, 3)             [R1 0; 0 R2]*d(Sb)]  *R_down([3,3])*d(St, 4)
-
-
-Qzero = substituteArray(Q, Dict([R1 => 0, R2 => 0, C1 => 1, C2 => 1]))
-
-P = u(St, 4)*R_up([3,3])*[  u(Pb, 0)*[C1 0; 0 C2]         zeros(3, 2);
-                            zeros(3, 2 )     u(Sb, 0)*[R1  0; 0 R2]]
-
-Pzero = substituteArray(P, Dict([R1 => 0, R2 => 0, C1 => 1, C2 => 1]))
-
-U = [Vs             zeros(1, 6)
-     zeros(6, 1)    Diagonal(ones(6))]
-
-A = Qzero*U*Pzero
-ins = [1/(1/R_R1+1/R_C1) + R_R2 + R_C2  zeros(1, 6)
-        zeros(6, 1)                     zeros(6, 6)]
-B = simplifyArray(Qzero*ins* [Vs; zeros(6, 1)])
-scatter = simplifyArray(model)
-
-simplify(scatter[2,2])
+# Q = [[R1 0; 0 C2]*d(Pb)     zeros(2, 3);
+#     zeros(2, 3)             [R1 0; 0 R2]*d(Sb)]  *R_down([3,3])*d(St, 4)
+#
+#
+# Qzero = substituteArray(Q, Dict([R1 => 0, R2 => 0, C1 => 1, C2 => 1]))
+#
+# P = u(St, 4)*R_up([3,3])*[  u(Pb, 0)*[C1 0; 0 C2]         zeros(3, 2);
+#                             zeros(3, 2 )     u(Sb, 0)*[R1  0; 0 R2]]
+#
+# Pzero = substituteArray(P, Dict([R1 => 0, R2 => 0, C1 => 1, C2 => 1]))
+#
+# U = [Vs             zeros(1, 6)
+#      zeros(6, 1)    Diagonal(ones(6))]
+#
+# A = Qzero*U*Pzero
+# ins = [1/(1/R_R1+1/R_C1) + R_R2 + R_C2  zeros(1, 6)
+#         zeros(6, 1)                     zeros(6, 6)]
+# B = simplifyArray(Qzero*ins* [Vs; zeros(6, 1)])
+# scatter = simplifyArray(model)
+#
+# simplify(scatter[2,2])
