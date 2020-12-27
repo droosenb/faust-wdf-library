@@ -180,7 +180,7 @@ U = [Vs             zeros(1, 2)
 A = simplifyArray(Q*U*P)
 println(latexify(pretty_expr(A)))
 
-Vs = V_in;
+Vs = 1;
 
 U_ins = [Vs             zeros(1, 2)
          zeros(2, 1)    Diagonal(zeros(2))]
@@ -209,28 +209,33 @@ R2 = 0;
 C1 = 1;
 C2 = 1;
 
-Q = [[R1 0; 0 C2]*d(Pb)     zeros(2, 3);
-    zeros(2, 3)             [R2 0; 0 C2]*d(Sb)]  *R_down([3,3])*d(St, 4)
-
 
 P = u(St, 4)*R_up([3,3])*[  u(Pb, 0)*[R1 0; 0 C1]         zeros(3, 2);
                             zeros(3, 2 )     u(Sb, 0)*[R2  0; 0 C2]]
-
+P = simplifyArray(P)
 
 U = [Vs             zeros(1, 6)
      zeros(6, 1)    Diagonal(ones(6))]
 
+
+Q = [[R1 0; 0 C1]*d(Pb)     zeros(2, 3);
+     zeros(2, 3)             [R2 0; 0 C2]*d(Sb)]*R_down([3,3])*d(St, 4)
+
+Q = simplifyArray(Q)
+
 #A
 A = simplifyArray(Q*U*P)
 
-ins = [1/(1/R_R1+1/R_C1) + R_R2 + R_C2  zeros(1, 6)
+Vs = 2;
+U_ins = [Vs  zeros(1, 6)
         zeros(6, 1)                     zeros(6, 6)]
 #B
-B = simplifyArray(Qzero*ins* [V_in; zeros(6, 1)])
+B = simplifyArray(Q*U_ins)
 
 
-println(latexify(simplify(pretty_expr(A[2,2]))))
+println(latexify(pretty_expr(A)))
 println(latexify(pretty_expr(B)))
+
 #scatter = simplifyArray(model)
 #simplify(scatter[2,2])
 #modified connection tree form
