@@ -180,7 +180,7 @@ U = [Vs             zeros(1, 2)
 A = simplifyArray(Q*U*P)
 println(latexify(pretty_expr(A)))
 
-Vs = 1;
+Vs = 2;
 
 U_ins = [Vs             zeros(1, 2)
          zeros(2, 1)    Diagonal(zeros(2))]
@@ -220,6 +220,35 @@ U = [Vs             zeros(1, 6)
 
 Q = [[R1 0; 0 C1]*d(Pb)     zeros(2, 3);
      zeros(2, 3)             [R2 0; 0 C2]*d(Sb)]*R_down([3,3])*d(St, 4)
+
+Q = simplifyArray(Q)
+
+#A
+A = simplifyArray(Q*U*P)
+
+Vs = 2;
+U_ins = [Vs  zeros(1, 6)
+        zeros(6, 1)                     zeros(6, 6)]
+#B
+B = simplifyArray(Q*U_ins)
+
+
+println(latexify(pretty_expr(A)))
+println(latexify(pretty_expr(B)))
+
+
+P = u(St, 4)*R_up([3,3])*[ u(Sb, 0)*[C2 0; 0 R2]           zeros(3, 2);
+                            zeros(3, 2 )    u(Pb, 0)*[C1 0; 0 R1]]
+P = simplifyArray(P)
+
+Vs = -1;
+
+U = [Vs             zeros(1, 6)
+     zeros(6, 1)    Diagonal(ones(6))]
+
+
+Q = [[C1 0; 0 R1]*d(Pb)     zeros(2, 3);
+     zeros(2, 3)             [C2 0; 0 R2]*d(Sb)]*R_down([3,3])*d(St, 4)
 
 Q = simplifyArray(Q)
 
