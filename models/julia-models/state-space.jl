@@ -112,13 +112,13 @@ end
 #common adaptor declrations as found in Werner Dissertation
 @variables R_1, R_2, rho
 
-S_series  = [0                  -R_1^(1-rho)/(R_1+R_2)^(1-rho)      -R_2^(1-rho)/(R_1+R_2)^(1-rho)
-            -R_1^rho/(R_1+R_2)   R_2/(R_1+R_2)                       -R_1^rho*R_2^(1-rho)/(R_1+R_2)
-            -R_2^rho/(R_1+R_2)  -R_1^(1-rho)*R_2^rho/(R_1+R_2)      R_1/(R_1+R_2)]
+S_series(R_1, R_2, rho)  =  [0                  -R_1^(1-rho)/(R_1+R_2)^(1-rho)      -R_2^(1-rho)/(R_1+R_2)^(1-rho)
+                            -R_1^rho/(R_1+R_2)   R_2/(R_1+R_2)                       -R_1^rho*R_2^(1-rho)/(R_1+R_2)
+                            -R_2^rho/(R_1+R_2)  -R_1^(1-rho)*R_2^rho/(R_1+R_2)      R_1/(R_1+R_2)]
 
-S_parallel = [0                                 R_2^(rho)/(R_1+R_2)^(rho)       R_1^(rho)/(R_1+R_2)^(rho)
-             R_2^(1-rho)/(R_1+R_2)^(1-rho)     -R_1/(R_1+R_2)                   R_1^rho*R_2^(1-rho)/(R_1+R_2)
-             R_1^(1-rho)/(R_1+R_2)^(1-rho)      R_1^(1-rho)*R_2^rho/(R_1+R_2)   -R_2/(R_1+R_2)]
+S_parallel(R_1, R_2, rho) = [0                                 R_2^(rho)/(R_1+R_2)^(rho)       R_1^(rho)/(R_1+R_2)^(rho)
+                            R_2^(1-rho)/(R_1+R_2)^(1-rho)     -R_1/(R_1+R_2)                   R_1^rho*R_2^(1-rho)/(R_1+R_2)
+                            R_1^(1-rho)/(R_1+R_2)^(1-rho)      R_1^(1-rho)*R_2^rho/(R_1+R_2)   -R_2/(R_1+R_2)]
 
 # very simple model test (first-order RC filter), see p. 82
 # connection tree Vs : S1 : (R1, C1)
@@ -132,7 +132,7 @@ S_parallel = [0                                 R_2^(rho)/(R_1+R_2)^(rho)       
 @parameters Q U P A B C;
 
 #initialize scattering mtx for S
-S1 = substituteArray(S_series, Dict([R_1 => R_C1, R_2 => R_R1, rho => 1]))
+S1 = S_series(R_R1, R_C1, 1)
 
 R1 = 0;
 C1 = 1;
@@ -154,7 +154,7 @@ U = [Vs             zeros(1, 2)
 A = simplifyArray(Q*U*P)
 println(latexify(pretty_expr(A)))
 
-Vs = V_in;
+Vs = 2;
 
 U_ins = [Vs             zeros(1, 2)
          zeros(2, 1)    Diagonal(zeros(2))]
@@ -162,7 +162,7 @@ U_ins = [Vs             zeros(1, 2)
 B = simplifyArray(Q*U_ins)
 println(latexify(pretty_expr(B)))
 
-#swap Rs and Cs and repeat
+#swap Rs and Cs and repeat to confirm struture
 #declare P (up-going waves)
 P = u(S1, 0)*[R1 0; 0 C1]
 
@@ -198,9 +198,9 @@ println(latexify(pretty_expr(B)))
 
 @variables R_R1 R_R2 R_C1 R_C2;
 
-Sb = substituteArray(S_series, Dict([R_1 => R_R2, R_2 => R_C2, rho => 1]))
-Pb = substituteArray(S_parallel, Dict([R_1 => R_R1, R_2 => R_C1, rho => 1]))
-St = substituteArray(S_series, Dict([R_1 => 1/(1/R_R1+1/R_C1), R_2 => R_R2 + R_C2, rho => 1]))
+Sb = S_series(R_R2, R_C2, 1)
+Pb = S_parallel( R_R1,  R_C1,  1)
+St = S_series(1/(1/R_R1+1/R_C1),  R_R2 + R_C2, 1)
 
 Vs = -1;
 
@@ -264,29 +264,3 @@ B = simplifyArray(Q*U_ins)
 
 println(latexify(pretty_expr(A)))
 println(latexify(pretty_expr(B)))
-
-#scatter = simplifyArray(model)
-#simplify(scatter[2,2])
-#modified connection tree form
-# connection tree Vs : St : ((Pb : (C1, C2)), (Sb : (R1, R2)))
-# Q = [[R1 0; 0 C2]*d(Pb)     zeros(2, 3);
-#     zeros(2, 3)             [R1 0; 0 R2]*d(Sb)]  *R_down([3,3])*d(St, 4)
-#
-#
-# Qzero = substituteArray(Q, Dict([R1 => 0, R2 => 0, C1 => 1, C2 => 1]))
-#
-# P = u(St, 4)*R_up([3,3])*[  u(Pb, 0)*[C1 0; 0 C2]         zeros(3, 2);
-#                             zeros(3, 2 )     u(Sb, 0)*[R1  0; 0 R2]]
-#
-# Pzero = substituteArray(P, Dict([R1 => 0, R2 => 0, C1 => 1, C2 => 1]))
-#
-# U = [Vs             zeros(1, 6)
-#      zeros(6, 1)    Diagonal(ones(6))]
-#
-# A = Qzero*U*Pzero
-# ins = [1/(1/R_R1+1/R_C1) + R_R2 + R_C2  zeros(1, 6)
-#         zeros(6, 1)                     zeros(6, 6)]
-# B = simplifyArray(Qzero*ins* [Vs; zeros(6, 1)])
-# scatter = simplifyArray(model)
-#
-# simplify(scatter[2,2])
