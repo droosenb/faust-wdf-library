@@ -113,8 +113,8 @@ end
 @variables R_1, R_2, rho
 
 S_series(R_1, R_2, rho)  =  [0                  -R_1^(1-rho)/(R_1+R_2)^(1-rho)      -R_2^(1-rho)/(R_1+R_2)^(1-rho)
-                            -R_1^rho/(R_1+R_2)   R_2/(R_1+R_2)                       -R_1^rho*R_2^(1-rho)/(R_1+R_2)
-                            -R_2^rho/(R_1+R_2)  -R_1^(1-rho)*R_2^rho/(R_1+R_2)      R_1/(R_1+R_2)]
+                            -R_1^rho/(R_1+R_2)   R_2/(R_1+R_2)                      -R_1^rho*R_2^(1-rho)/(R_1+R_2)
+                            -R_2^rho/(R_1+R_2)  -R_1^(1-rho)*R_2^rho/(R_1+R_2)       R_1/(R_1+R_2)]
 
 S_parallel(R_1, R_2, rho) = [0                                 R_2^(rho)/(R_1+R_2)^(rho)       R_1^(rho)/(R_1+R_2)^(rho)
                             R_2^(1-rho)/(R_1+R_2)^(1-rho)     -R_1/(R_1+R_2)                   R_1^rho*R_2^(1-rho)/(R_1+R_2)
@@ -132,20 +132,29 @@ S_parallel(R_1, R_2, rho) = [0                                 R_2^(rho)/(R_1+R_
 @parameters Q U P A B C;
 
 #initialize scattering mtx for S
-S1 = S_series(R_R1, R_C1, 1)
-
+S1 = simplifyArray(S_series(R_C1, R_R1, 1))
+#println(latexify(pretty_expr(S1)))
 R1 = 0;
 C1 = 1;
 
+println(latexify(pretty_expr(S1)))
+println(latexify(pretty_expr(simplifyArray(d(S1,0)))))
+println(latexify(pretty_expr(simplifyArray(u(S1,0)))))
+
+println("Array P")
 #declare P (up-going waves)
 P = u(S1, 0)*[C1 0; 0 R1]
+P = simplifyArray(P)
+println(latexify(pretty_expr(P)))
 
-latexify(pretty_expr(u(S1, 0)))
 
-Q =[C1 0; 0 R1]*d(S1, 0)
+
+println("Array Q")
+Q = [C1 0; 0 R1]*d(S1, 0)
+Q = simplifyArray(Q)
+println(latexify(pretty_expr(Q)))
 
 Vs = -1;
-
 
 U = [Vs             zeros(1, 2)
      zeros(2, 1)    Diagonal(ones(2))]
@@ -164,11 +173,19 @@ println(latexify(pretty_expr(B)))
 
 #swap Rs and Cs and repeat to confirm struture
 #declare P (up-going waves)
-P = u(S1, 0)*[R1 0; 0 C1]
 
-latexify(pretty_expr(u(S1, 0)))
+S1 = simplifyArray(S_series(R_R1, R_C1, 1))
+
+P = u(S1, 0)*[R1 0; 0 C1]
+println("Array P")
+P = simplifyArray(P)
+println(latexify(pretty_expr(P)))
+
 
 Q =[R1 0; 0 C1]*d(S1, 0)
+println("Array Q")
+Q = simplifyArray(Q)
+println(latexify(pretty_expr(Q)))
 
 Vs = -1;
 
