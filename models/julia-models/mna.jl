@@ -1,8 +1,9 @@
-using Latexify;
-using LaTeXStrings;
+#using Latexify;
+#using LaTeXStrings;
 using SparseArrays;
 using LinearAlgebra;
 using ModelingToolkit;
+
 
 #using Reduce.Algebra;
 
@@ -76,7 +77,26 @@ function vcvs_stamp(inmtx, val, i, j, k, l, start)
   return mtx;
 end
 
+function mathmaticaArray(mtx::Array)
+    println("")
+    str::String = "{ "
+    for i = 1:size(mtx)[1]
+        str *= "{ $(mtx[i, 1])"
+        for j = 2:size(mtx)[2]
+            str *= ", $(mtx[i, j])"
+        end
+        str *= " }, "
+    end
+    str *= " }"
+    println("")
+    return str
+end
 
+function reduce_mtx(vn, i, etc)
+    Red =  Array(   [zeros(Num, vn, i)
+                    Diagonal(ones(Num, i))
+                    zeros(Num, etc, i)])
+end
 # @variables R1 R2 R3
 # MNA = resistor_stamp(zeros(Num, 4, 4), R2, 1, 3)
 
@@ -106,15 +126,17 @@ MNA = voltage_MNA(MNA, V_mtx, 0)
 # remove ground nodes
 MNA = MNA[2:16, 2:16]
 
+
+println(mathmaticaArray(MNA))
+
 hold = simplifyArray(MNA)
 
 MNA = toexpr(MNA)
 
-Red =  [zeros(Num, 9, 6)
-        Diagonal(ones(Num, 6))]
-Red = toexpr(Matrix(Red))
+Red =  Array([zeros(Num, 9, 6)
+        Diagonal(ones(Num, 6))])
 
-using Reduce.Algebra
+println(mathmaticaArray(Red))
 
 test = Red'
 
