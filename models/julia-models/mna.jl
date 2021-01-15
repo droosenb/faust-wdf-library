@@ -21,10 +21,10 @@ end
 
 function resistor_stamp(inmtx, val, i, j)
     mtx = inmtx
-    mtx[i, i] =  val + mtx[i, i]
-    mtx[j, j] =  val + mtx[j, j]
-    mtx[i, j] = -val + mtx[i, j]
-    mtx[j, i] = -val + mtx[j, i]
+    mtx[i, i] =  1/val + mtx[i, i]
+    mtx[j, j] =  1/val + mtx[j, j]
+    mtx[i, j] = 1/-val + mtx[i, j]
+    mtx[j, i] = 1/-val + mtx[j, i]
     return mtx;
 end
 
@@ -77,7 +77,7 @@ function vcvs_stamp(inmtx, val, i, j, k, l, start)
   return mtx;
 end
 
-function mathmaticaArray(mtx::Array)
+function julia2mathmaticaArray(mtx::Array)
     println("")
     str::String = "{ "
     for i = 1:size(mtx)[1]
@@ -92,14 +92,17 @@ function mathmaticaArray(mtx::Array)
     return str
 end
 
+function mathmatica2faustArray(str::String)
+    body
+end
+
 function reduce_mtx(vn, i, etc)
     Red =  Array(   [zeros(Num, vn, i)
                     Diagonal(ones(Num, i))
                     zeros(Num, etc, i)])
 end
-# @variables R1 R2 R3
-# MNA = resistor_stamp(zeros(Num, 4, 4), R2, 1, 3)
 
+#tonestack MNA
 @variables Ra Rb Rc Rd Re Rf Va Vb Vc Vd Ve Vf rho;
 
 MNA = zeros(Num, 16, 16)
@@ -121,11 +124,8 @@ V_mtx = [Va 2 1
 MNA = resistor_MNA(MNA, R_mtx)
 MNA = voltage_MNA(MNA, V_mtx, 0)
 # println(latexify(simplifyArray(MNA)))
-
-
 # remove ground nodes
 MNA = MNA[2:16, 2:16]
-
 
 println(mathmaticaArray(MNA))
 
@@ -137,6 +137,47 @@ Red =  Array([zeros(Num, 9, 6)
         Diagonal(ones(Num, 6))])
 
 println(mathmaticaArray(Red))
+
+
+#pultec MNA
+@variables Ra Rb Rc Rd Re Rf Va Vb Vc Vd Ve Vf rho;
+
+MNA = zeros(Num, 16, 16)
+
+R_mtx = [Ra 1 7
+         Rb 2 7
+         Rc 3 9
+         Rd 4 10
+         Re 5 8
+         Rf 6 8]
+V_mtx = [Va 1 10
+         Vb 2 9
+         Vc 3 10
+         Vd 4 8
+         Ve 5 9
+         Vf 6 7]
+
+# add stamps
+MNA = resistor_MNA(MNA, R_mtx)
+MNA = voltage_MNA(MNA, V_mtx, 0)
+# println(latexify(simplifyArray(MNA)))
+
+
+# remove ground nodes
+MNA = MNA[1:end .!= 10, 1:end .!= 10]
+
+println(mathmaticaArray(MNA))
+
+hold = simplifyArray(MNA)
+
+MNA = toexpr(MNA)
+
+Red =  Array([zeros(Num, 9, 6)
+        Diagonal(ones(Num, 6))])
+
+println(mathmaticaArray(Red))
+
+
 
 test = Red'
 
@@ -163,3 +204,54 @@ scatter_a_voltage = simplify(subs(scatter_voltage, Ra, oneone))
 
 scatter_a = simplify(subs(scatter, Ra, (Rd + Rf))) # adapted matrix
 scatter_a_voltage = simplify(subs(scatter_a, rho, 1)) # just for voltage waves
+{{-((Rd*Re + Rb*(Rc + Rd + Re) + Rd*Rf + Re*Rf + Rc*(Re + Rf))/(Ra*(Rd*Re + Rb*(Rc + Rd + Re) + Rd*Rf + Re*Rf + Rc*(Re + Rf)) + Rc*(Re*Rf + Rd*(Re + Rf)) +
+      Rb*(Re*Rf + Rc*(Rd + Rf) + Rd*(Re + Rf)))), ((Rc + Re)*Rf + Rd*(Re + Rf))/(Ra*(Rd*Re + Rb*(Rc + Rd + Re) + Rd*Rf + Re*Rf + Rc*(Re + Rf)) +
+     Rc*(Re*Rf + Rd*(Re + Rf)) + Rb*(Re*Rf + Rc*(Rd + Rf) + Rd*(Re + Rf))), (Rb*Rd + Re*Rf + Rd*(Re + Rf))/
+    (Ra*(Rd*Re + Rb*(Rc + Rd + Re) + Rd*Rf + Re*Rf + Rc*(Re + Rf)) + Rc*(Re*Rf + Rd*(Re + Rf)) + Rb*(Re*Rf + Rc*(Rd + Rf) + Rd*(Re + Rf))),
+   -((Rb*(Rc + Re) + Rc*(Re + Rf))/(Ra*(Rd*Re + Rb*(Rc + Rd + Re) + Rd*Rf + Re*Rf + Rc*(Re + Rf)) + Rc*(Re*Rf + Rd*(Re + Rf)) +
+      Rb*(Re*Rf + Rc*(Rd + Rf) + Rd*(Re + Rf)))), (Rb*Rd - Rc*Rf)/(Ra*(Rd*Re + Rb*(Rc + Rd + Re) + Rd*Rf + Re*Rf + Rc*(Re + Rf)) + Rc*(Re*Rf + Rd*(Re + Rf)) +
+     Rb*(Re*Rf + Rc*(Rd + Rf) + Rd*(Re + Rf))), -((Rc*Re + Rb*(Rc + Rd + Re))/(Ra*(Rd*Re + Rb*(Rc + Rd + Re) + Rd*Rf + Re*Rf + Rc*(Re + Rf)) +
+      Rc*(Re*Rf + Rd*(Re + Rf)) + Rb*(Re*Rf + Rc*(Rd + Rf) + Rd*(Re + Rf))))},
+  {((Rc + Re)*Rf + Rd*(Re + Rf))/(Ra*(Rd*Re + Rb*(Rc + Rd + Re) + Rd*Rf + Re*Rf + Rc*(Re + Rf)) + Rc*(Re*Rf + Rd*(Re + Rf)) +
+     Rb*(Re*Rf + Rc*(Rd + Rf) + Rd*(Re + Rf))), -((Rd*Re + Ra*(Rc + Rd + Re) + Rd*Rf + Re*Rf + Rc*(Rd + Rf))/
+     (Ra*(Rd*Re + Rb*(Rc + Rd + Re) + Rd*Rf + Re*Rf + Rc*(Re + Rf)) + Rc*(Re*Rf + Rd*(Re + Rf)) + Rb*(Re*Rf + Rc*(Rd + Rf) + Rd*(Re + Rf)))),
+   -((Ra*Re + Re*Rf + Rd*(Re + Rf))/(Ra*(Rd*Re + Rb*(Rc + Rd + Re) + Rd*Rf + Re*Rf + Rc*(Re + Rf)) + Rc*(Re*Rf + Rd*(Re + Rf)) +
+      Rb*(Re*Rf + Rc*(Rd + Rf) + Rd*(Re + Rf)))), ((-Ra)*Re + Rc*Rf)/(Ra*(Rd*Re + Rb*(Rc + Rd + Re) + Rd*Rf + Re*Rf + Rc*(Re + Rf)) + Rc*(Re*Rf + Rd*(Re + Rf)) +
+     Rb*(Re*Rf + Rc*(Rd + Rf) + Rd*(Re + Rf))), (Ra*(Rc + Rd) + Rc*(Rd + Rf))/(Ra*(Rd*Re + Rb*(Rc + Rd + Re) + Rd*Rf + Re*Rf + Rc*(Re + Rf)) +
+     Rc*(Re*Rf + Rd*(Re + Rf)) + Rb*(Re*Rf + Rc*(Rd + Rf) + Rd*(Re + Rf))),
+   -((Rc*Rd + Ra*(Rc + Rd + Re))/(Ra*(Rd*Re + Rb*(Rc + Rd + Re) + Rd*Rf + Re*Rf + Rc*(Re + Rf)) + Rc*(Re*Rf + Rd*(Re + Rf)) +
+      Rb*(Re*Rf + Rc*(Rd + Rf) + Rd*(Re + Rf))))}, {(Rb*Rd + Re*Rf + Rd*(Re + Rf))/(Ra*(Rd*Re + Rb*(Rc + Rd + Re) + Rd*Rf + Re*Rf + Rc*(Re + Rf)) +
+     Rc*(Re*Rf + Rd*(Re + Rf)) + Rb*(Re*Rf + Rc*(Rd + Rf) + Rd*(Re + Rf))),
+   -((Ra*Re + Re*Rf + Rd*(Re + Rf))/(Ra*(Rd*Re + Rb*(Rc + Rd + Re) + Rd*Rf + Re*Rf + Rc*(Re + Rf)) + Rc*(Re*Rf + Rd*(Re + Rf)) +
+      Rb*(Re*Rf + Rc*(Rd + Rf) + Rd*(Re + Rf)))), -((Rd*Re + Rd*Rf + Re*Rf + Rb*(Rd + Rf) + Ra*(Rb + Re + Rf))/
+     (Ra*(Rd*Re + Rb*(Rc + Rd + Re) + Rd*Rf + Re*Rf + Rc*(Re + Rf)) + Rc*(Re*Rf + Rd*(Re + Rf)) + Rb*(Re*Rf + Rc*(Rd + Rf) + Rd*(Re + Rf)))),
+   -((Rb*Rf + Ra*(Rb + Re + Rf))/(Ra*(Rd*Re + Rb*(Rc + Rd + Re) + Rd*Rf + Re*Rf + Rc*(Re + Rf)) + Rc*(Re*Rf + Rd*(Re + Rf)) +
+      Rb*(Re*Rf + Rc*(Rd + Rf) + Rd*(Re + Rf)))), -((Ra*(Rb + Rf) + Rb*(Rd + Rf))/(Ra*(Rd*Re + Rb*(Rc + Rd + Re) + Rd*Rf + Re*Rf + Rc*(Re + Rf)) +
+      Rc*(Re*Rf + Rd*(Re + Rf)) + Rb*(Re*Rf + Rc*(Rd + Rf) + Rd*(Re + Rf)))), (Rb*Rd - Ra*Re)/(Ra*(Rd*Re + Rb*(Rc + Rd + Re) + Rd*Rf + Re*Rf + Rc*(Re + Rf)) +
+     Rc*(Re*Rf + Rd*(Re + Rf)) + Rb*(Re*Rf + Rc*(Rd + Rf) + Rd*(Re + Rf)))},
+  {-((Rb*(Rc + Re) + Rc*(Re + Rf))/(Ra*(Rd*Re + Rb*(Rc + Rd + Re) + Rd*Rf + Re*Rf + Rc*(Re + Rf)) + Rc*(Re*Rf + Rd*(Re + Rf)) +
+      Rb*(Re*Rf + Rc*(Rd + Rf) + Rd*(Re + Rf)))), ((-Ra)*Re + Rc*Rf)/(Ra*(Rd*Re + Rb*(Rc + Rd + Re) + Rd*Rf + Re*Rf + Rc*(Re + Rf)) + Rc*(Re*Rf + Rd*(Re + Rf)) +
+     Rb*(Re*Rf + Rc*(Rd + Rf) + Rd*(Re + Rf))), -((Rb*Rf + Ra*(Rb + Re + Rf))/(Ra*(Rd*Re + Rb*(Rc + Rd + Re) + Rd*Rf + Re*Rf + Rc*(Re + Rf)) +
+      Rc*(Re*Rf + Rd*(Re + Rf)) + Rb*(Re*Rf + Rc*(Rd + Rf) + Rd*(Re + Rf)))),
+   -((Rc*(Re + Rf) + Ra*(Rb + Re + Rf) + Rb*(Rc + Re + Rf))/(Ra*(Rd*Re + Rb*(Rc + Rd + Re) + Rd*Rf + Re*Rf + Rc*(Re + Rf)) + Rc*(Re*Rf + Rd*(Re + Rf)) +
+      Rb*(Re*Rf + Rc*(Rd + Rf) + Rd*(Re + Rf)))), -(((Rb + Rc)*Rf + Ra*(Rb + Rf))/(Ra*(Rd*Re + Rb*(Rc + Rd + Re) + Rd*Rf + Re*Rf + Rc*(Re + Rf)) +
+      Rc*(Re*Rf + Rd*(Re + Rf)) + Rb*(Re*Rf + Rc*(Rd + Rf) + Rd*(Re + Rf)))),
+   -(((Ra + Rc)*Re + Rb*(Rc + Re))/(Ra*(Rd*Re + Rb*(Rc + Rd + Re) + Rd*Rf + Re*Rf + Rc*(Re + Rf)) + Rc*(Re*Rf + Rd*(Re + Rf)) +
+      Rb*(Re*Rf + Rc*(Rd + Rf) + Rd*(Re + Rf))))}, {(Rb*Rd - Rc*Rf)/(Ra*(Rd*Re + Rb*(Rc + Rd + Re) + Rd*Rf + Re*Rf + Rc*(Re + Rf)) + Rc*(Re*Rf + Rd*(Re + Rf)) +
+     Rb*(Re*Rf + Rc*(Rd + Rf) + Rd*(Re + Rf))), (Ra*(Rc + Rd) + Rc*(Rd + Rf))/(Ra*(Rd*Re + Rb*(Rc + Rd + Re) + Rd*Rf + Re*Rf + Rc*(Re + Rf)) +
+     Rc*(Re*Rf + Rd*(Re + Rf)) + Rb*(Re*Rf + Rc*(Rd + Rf) + Rd*(Re + Rf))),
+   -((Ra*(Rb + Rf) + Rb*(Rd + Rf))/(Ra*(Rd*Re + Rb*(Rc + Rd + Re) + Rd*Rf + Re*Rf + Rc*(Re + Rf)) + Rc*(Re*Rf + Rd*(Re + Rf)) +
+      Rb*(Re*Rf + Rc*(Rd + Rf) + Rd*(Re + Rf)))), -(((Rb + Rc)*Rf + Ra*(Rb + Rf))/(Ra*(Rd*Re + Rb*(Rc + Rd + Re) + Rd*Rf + Re*Rf + Rc*(Re + Rf)) +
+      Rc*(Re*Rf + Rd*(Re + Rf)) + Rb*(Re*Rf + Rc*(Rd + Rf) + Rd*(Re + Rf)))),
+   -(((Rb + Rc)*(Rd + Rf) + Ra*(Rb + Rc + Rd + Rf))/(Ra*(Rd*Re + Rb*(Rc + Rd + Re) + Rd*Rf + Re*Rf + Rc*(Re + Rf)) + Rc*(Re*Rf + Rd*(Re + Rf)) +
+      Rb*(Re*Rf + Rc*(Rd + Rf) + Rd*(Re + Rf)))), ((Rb + Rc)*Rd + Ra*(Rc + Rd))/(Ra*(Rd*Re + Rb*(Rc + Rd + Re) + Rd*Rf + Re*Rf + Rc*(Re + Rf)) +
+     Rc*(Re*Rf + Rd*(Re + Rf)) + Rb*(Re*Rf + Rc*(Rd + Rf) + Rd*(Re + Rf)))},
+  {-((Rc*Re + Rb*(Rc + Rd + Re))/(Ra*(Rd*Re + Rb*(Rc + Rd + Re) + Rd*Rf + Re*Rf + Rc*(Re + Rf)) + Rc*(Re*Rf + Rd*(Re + Rf)) +
+      Rb*(Re*Rf + Rc*(Rd + Rf) + Rd*(Re + Rf)))), -((Rc*Rd + Ra*(Rc + Rd + Re))/(Ra*(Rd*Re + Rb*(Rc + Rd + Re) + Rd*Rf + Re*Rf + Rc*(Re + Rf)) +
+      Rc*(Re*Rf + Rd*(Re + Rf)) + Rb*(Re*Rf + Rc*(Rd + Rf) + Rd*(Re + Rf)))), (Rb*Rd - Ra*Re)/(Ra*(Rd*Re + Rb*(Rc + Rd + Re) + Rd*Rf + Re*Rf + Rc*(Re + Rf)) +
+     Rc*(Re*Rf + Rd*(Re + Rf)) + Rb*(Re*Rf + Rc*(Rd + Rf) + Rd*(Re + Rf))),
+   -(((Ra + Rc)*Re + Rb*(Rc + Re))/(Ra*(Rd*Re + Rb*(Rc + Rd + Re) + Rd*Rf + Re*Rf + Rc*(Re + Rf)) + Rc*(Re*Rf + Rd*(Re + Rf)) +
+      Rb*(Re*Rf + Rc*(Rd + Rf) + Rd*(Re + Rf)))), ((Rb + Rc)*Rd + Ra*(Rc + Rd))/(Ra*(Rd*Re + Rb*(Rc + Rd + Re) + Rd*Rf + Re*Rf + Rc*(Re + Rf)) +
+     Rc*(Re*Rf + Rd*(Re + Rf)) + Rb*(Re*Rf + Rc*(Rd + Rf) + Rd*(Re + Rf))),
+   -((Rc*(Rd + Re) + Ra*(Rc + Rd + Re) + Rb*(Rc + Rd + Re))/(Ra*(Rd*Re + Rb*(Rc + Rd + Re) + Rd*Rf + Re*Rf + Rc*(Re + Rf)) + Rc*(Re*Rf + Rd*(Re + Rf)) +
+      Rb*(Re*Rf + Rc*(Rd + Rf) + Rd*(Re + Rf))))}}
