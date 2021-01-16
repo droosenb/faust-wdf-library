@@ -1,11 +1,6 @@
-#using Latexify;
-#using LaTeXStrings;
 using SparseArrays;
 using LinearAlgebra;
 using ModelingToolkit;
-
-
-#using Reduce.Algebra;
 
 function simplifyArray(arr)
     tmp = Array{Num, 2}(undef, size(arr)[1], size(arr)[2])
@@ -114,7 +109,7 @@ function mathmatica2faustArray(str::String, f::String, dim::Int)
     tmp = replace(tmp, "=>(" => "=> (")
     tmp = replace(tmp, "=>  " => "=> ")
 
-    println(tmp);
+    return tmp;
 end
 
 function reduce_mtx(vn, i, etc)
@@ -151,7 +146,7 @@ MNA = MNA[1:end .!= 10, 1:end .!= 10]
 
 println(mathmaticaArray(MNA))
 
-#perform remaining computations in Mathmatica
+#perform remaining computations in Mathmatica - coppied from tonestack.nb
 S = """{{((-Ra)*(Rd*Re + Rb*(Rc + Rd + Re) + Rd*Rf + Re*Rf + Rc*(Re + Rf)) + Rc*(Re*Rf + Rd*(Re + Rf)) + Rb*(Re*Rf + Rc*(Rd + Rf) + Rd*(Re + Rf)))/(Ra*(Rd*Re + Rb*(Rc + Rd + Re) + Rd*Rf + Re*Rf + Rc*(Re + Rf)) + Rc*(Re*Rf + Rd*(Re + Rf)) +
      Rb*(Re*Rf + Rc*(Rd + Rf) + Rd*(Re + Rf))), (2*Ra*((Rc + Re)*Rf + Rd*(Re + Rf)))/(Ra*(Rd*Re + Rb*(Rc + Rd + Re) + Rd*Rf + Re*Rf + Rc*(Re + Rf)) + Rc*(Re*Rf + Rd*(Re + Rf)) + Rb*(Re*Rf + Rc*(Rd + Rf) + Rd*(Re + Rf))),
    (2*Ra*(Rb*Rd + Re*Rf + Rd*(Re + Rf)))/(Ra*(Rd*Re + Rb*(Rc + Rd + Re) + Rd*Rf + Re*Rf + Rc*(Re + Rf)) + Rc*(Re*Rf + Rd*(Re + Rf)) + Rb*(Re*Rf + Rc*(Rd + Rf) + Rd*(Re + Rf))),
@@ -189,4 +184,4 @@ S = """{{((-Ra)*(Rd*Re + Rb*(Rc + Rd + Re) + Rd*Rf + Re*Rf + Rc*(Re + Rf)) + Rc*
    (2*((Rb + Rc)*Rd + Ra*(Rc + Rd))*Rf)/(Ra*(Rd*Re + Rb*(Rc + Rd + Re) + Rd*Rf + Re*Rf + Rc*(Re + Rf)) + Rc*(Re*Rf + Rd*(Re + Rf)) + Rb*(Re*Rf + Rc*(Rd + Rf) + Rd*(Re + Rf))),
    1 - (2*(Rc*(Rd + Re) + Ra*(Rc + Rd + Re) + Rb*(Rc + Rd + Re))*Rf)/(Ra*(Rd*Re + Rb*(Rc + Rd + Re) + Rd*Rf + Re*Rf + Rc*(Re + Rf)) + Rc*(Re*Rf + Rd*(Re + Rf)) + Rb*(Re*Rf + Rc*(Rd + Rf) + Rd*(Re + Rf)))}}"""
 
-mathmatica2faustArray(S, "s", 6)
+println(mathmatica2faustArray(S, "s", 6))

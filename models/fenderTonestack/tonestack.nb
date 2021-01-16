@@ -10,21 +10,16 @@
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[       158,          7]
-NotebookDataLength[     74058,       1774]
-NotebookOptionsPosition[     71609,       1725]
-NotebookOutlinePosition[     72010,       1741]
-CellTagsIndexPosition[     71967,       1738]
+NotebookDataLength[     40800,        933]
+NotebookOptionsPosition[     38447,        885]
+NotebookOutlinePosition[     38848,        901]
+CellTagsIndexPosition[     38805,        898]
 WindowFrame->Normal*)
 
 (* Beginning of Notebook Content *)
 Notebook[{
-Cell[BoxData["Rea"], "Input",
- CellChangeTimes->{{3.8198039596910534`*^9, 
-  3.8198039718908634`*^9}},ExpressionUUID->"24fa18b3-6db1-43d4-b770-\
-68a6f90c8360"],
 
 Cell[CellGroupData[{
-
 Cell[BoxData[
  RowBox[{"X", " ", "=", " ", 
   RowBox[{"{", 
@@ -631,964 +626,129 @@ Cell[BoxData[
   3.8198040949176226`*^9}},
  CellLabel->"In[31]:=",ExpressionUUID->"4aa8e8e3-16b7-4fec-884c-606edb488147"],
 
-Cell[BoxData[
- RowBox[{"{", 
-  RowBox[{
-   RowBox[{"{", 
-    RowBox[{
-     RowBox[{"1", "+", 
-      FractionBox[
-       RowBox[{"2", " ", "Ra", " ", 
-        RowBox[{"(", 
-         RowBox[{
-          RowBox[{
-           RowBox[{"-", "Rb"}], " ", "Rc"}], "-", 
-          RowBox[{"Rb", " ", "Rd"}], "-", 
-          RowBox[{"Rb", " ", "Re"}], "-", 
-          RowBox[{"Rc", " ", "Re"}], "-", 
-          RowBox[{"Rd", " ", "Re"}], "-", 
-          RowBox[{"Rc", " ", "Rf"}], "-", 
-          RowBox[{"Rd", " ", "Rf"}], "-", 
-          RowBox[{"Re", " ", "Rf"}]}], ")"}]}], 
-       RowBox[{
-        RowBox[{"Ra", " ", "Rb", " ", "Rc"}], "+", 
-        RowBox[{"Ra", " ", "Rb", " ", "Rd"}], "+", 
-        RowBox[{"Rb", " ", "Rc", " ", "Rd"}], "+", 
-        RowBox[{"Ra", " ", "Rb", " ", "Re"}], "+", 
-        RowBox[{"Ra", " ", "Rc", " ", "Re"}], "+", 
-        RowBox[{"Ra", " ", "Rd", " ", "Re"}], "+", 
-        RowBox[{"Rb", " ", "Rd", " ", "Re"}], "+", 
-        RowBox[{"Rc", " ", "Rd", " ", "Re"}], "+", 
-        RowBox[{"Ra", " ", "Rc", " ", "Rf"}], "+", 
-        RowBox[{"Rb", " ", "Rc", " ", "Rf"}], "+", 
-        RowBox[{"Ra", " ", "Rd", " ", "Rf"}], "+", 
-        RowBox[{"Rb", " ", "Rd", " ", "Rf"}], "+", 
-        RowBox[{"Rc", " ", "Rd", " ", "Rf"}], "+", 
-        RowBox[{"Ra", " ", "Re", " ", "Rf"}], "+", 
-        RowBox[{"Rb", " ", "Re", " ", "Rf"}], "+", 
-        RowBox[{"Rc", " ", "Re", " ", "Rf"}]}]]}], ",", 
-     FractionBox[
-      RowBox[{"2", " ", "Ra", " ", 
-       RowBox[{"(", 
-        RowBox[{
-         RowBox[{"Rd", " ", "Re"}], "+", 
-         RowBox[{"Rc", " ", "Rf"}], "+", 
-         RowBox[{"Rd", " ", "Rf"}], "+", 
-         RowBox[{"Re", " ", "Rf"}]}], ")"}]}], 
-      RowBox[{
-       RowBox[{"Ra", " ", "Rb", " ", "Rc"}], "+", 
-       RowBox[{"Ra", " ", "Rb", " ", "Rd"}], "+", 
-       RowBox[{"Rb", " ", "Rc", " ", "Rd"}], "+", 
-       RowBox[{"Ra", " ", "Rb", " ", "Re"}], "+", 
-       RowBox[{"Ra", " ", "Rc", " ", "Re"}], "+", 
-       RowBox[{"Ra", " ", "Rd", " ", "Re"}], "+", 
-       RowBox[{"Rb", " ", "Rd", " ", "Re"}], "+", 
-       RowBox[{"Rc", " ", "Rd", " ", "Re"}], "+", 
-       RowBox[{"Ra", " ", "Rc", " ", "Rf"}], "+", 
-       RowBox[{"Rb", " ", "Rc", " ", "Rf"}], "+", 
-       RowBox[{"Ra", " ", "Rd", " ", "Rf"}], "+", 
-       RowBox[{"Rb", " ", "Rd", " ", "Rf"}], "+", 
-       RowBox[{"Rc", " ", "Rd", " ", "Rf"}], "+", 
-       RowBox[{"Ra", " ", "Re", " ", "Rf"}], "+", 
-       RowBox[{"Rb", " ", "Re", " ", "Rf"}], "+", 
-       RowBox[{"Rc", " ", "Re", " ", "Rf"}]}]], ",", 
-     FractionBox[
-      RowBox[{"2", " ", "Ra", " ", 
-       RowBox[{"(", 
-        RowBox[{
-         RowBox[{"Rb", " ", "Rd"}], "+", 
-         RowBox[{"Rd", " ", "Re"}], "+", 
-         RowBox[{"Rd", " ", "Rf"}], "+", 
-         RowBox[{"Re", " ", "Rf"}]}], ")"}]}], 
-      RowBox[{
-       RowBox[{"Ra", " ", "Rb", " ", "Rc"}], "+", 
-       RowBox[{"Ra", " ", "Rb", " ", "Rd"}], "+", 
-       RowBox[{"Rb", " ", "Rc", " ", "Rd"}], "+", 
-       RowBox[{"Ra", " ", "Rb", " ", "Re"}], "+", 
-       RowBox[{"Ra", " ", "Rc", " ", "Re"}], "+", 
-       RowBox[{"Ra", " ", "Rd", " ", "Re"}], "+", 
-       RowBox[{"Rb", " ", "Rd", " ", "Re"}], "+", 
-       RowBox[{"Rc", " ", "Rd", " ", "Re"}], "+", 
-       RowBox[{"Ra", " ", "Rc", " ", "Rf"}], "+", 
-       RowBox[{"Rb", " ", "Rc", " ", "Rf"}], "+", 
-       RowBox[{"Ra", " ", "Rd", " ", "Rf"}], "+", 
-       RowBox[{"Rb", " ", "Rd", " ", "Rf"}], "+", 
-       RowBox[{"Rc", " ", "Rd", " ", "Rf"}], "+", 
-       RowBox[{"Ra", " ", "Re", " ", "Rf"}], "+", 
-       RowBox[{"Rb", " ", "Re", " ", "Rf"}], "+", 
-       RowBox[{"Rc", " ", "Re", " ", "Rf"}]}]], ",", 
-     FractionBox[
-      RowBox[{"2", " ", "Ra", " ", 
-       RowBox[{"(", 
-        RowBox[{
-         RowBox[{
-          RowBox[{"-", "Rb"}], " ", "Rc"}], "-", 
-         RowBox[{"Rb", " ", "Re"}], "-", 
-         RowBox[{"Rc", " ", "Re"}], "-", 
-         RowBox[{"Rc", " ", "Rf"}]}], ")"}]}], 
-      RowBox[{
-       RowBox[{"Ra", " ", "Rb", " ", "Rc"}], "+", 
-       RowBox[{"Ra", " ", "Rb", " ", "Rd"}], "+", 
-       RowBox[{"Rb", " ", "Rc", " ", "Rd"}], "+", 
-       RowBox[{"Ra", " ", "Rb", " ", "Re"}], "+", 
-       RowBox[{"Ra", " ", "Rc", " ", "Re"}], "+", 
-       RowBox[{"Ra", " ", "Rd", " ", "Re"}], "+", 
-       RowBox[{"Rb", " ", "Rd", " ", "Re"}], "+", 
-       RowBox[{"Rc", " ", "Rd", " ", "Re"}], "+", 
-       RowBox[{"Ra", " ", "Rc", " ", "Rf"}], "+", 
-       RowBox[{"Rb", " ", "Rc", " ", "Rf"}], "+", 
-       RowBox[{"Ra", " ", "Rd", " ", "Rf"}], "+", 
-       RowBox[{"Rb", " ", "Rd", " ", "Rf"}], "+", 
-       RowBox[{"Rc", " ", "Rd", " ", "Rf"}], "+", 
-       RowBox[{"Ra", " ", "Re", " ", "Rf"}], "+", 
-       RowBox[{"Rb", " ", "Re", " ", "Rf"}], "+", 
-       RowBox[{"Rc", " ", "Re", " ", "Rf"}]}]], ",", 
-     FractionBox[
-      RowBox[{"2", " ", "Ra", " ", 
-       RowBox[{"(", 
-        RowBox[{
-         RowBox[{"Rb", " ", "Rd"}], "-", 
-         RowBox[{"Rc", " ", "Rf"}]}], ")"}]}], 
-      RowBox[{
-       RowBox[{"Ra", " ", "Rb", " ", "Rc"}], "+", 
-       RowBox[{"Ra", " ", "Rb", " ", "Rd"}], "+", 
-       RowBox[{"Rb", " ", "Rc", " ", "Rd"}], "+", 
-       RowBox[{"Ra", " ", "Rb", " ", "Re"}], "+", 
-       RowBox[{"Ra", " ", "Rc", " ", "Re"}], "+", 
-       RowBox[{"Ra", " ", "Rd", " ", "Re"}], "+", 
-       RowBox[{"Rb", " ", "Rd", " ", "Re"}], "+", 
-       RowBox[{"Rc", " ", "Rd", " ", "Re"}], "+", 
-       RowBox[{"Ra", " ", "Rc", " ", "Rf"}], "+", 
-       RowBox[{"Rb", " ", "Rc", " ", "Rf"}], "+", 
-       RowBox[{"Ra", " ", "Rd", " ", "Rf"}], "+", 
-       RowBox[{"Rb", " ", "Rd", " ", "Rf"}], "+", 
-       RowBox[{"Rc", " ", "Rd", " ", "Rf"}], "+", 
-       RowBox[{"Ra", " ", "Re", " ", "Rf"}], "+", 
-       RowBox[{"Rb", " ", "Re", " ", "Rf"}], "+", 
-       RowBox[{"Rc", " ", "Re", " ", "Rf"}]}]], ",", 
-     FractionBox[
-      RowBox[{"2", " ", "Ra", " ", 
-       RowBox[{"(", 
-        RowBox[{
-         RowBox[{
-          RowBox[{"-", "Rb"}], " ", "Rc"}], "-", 
-         RowBox[{"Rb", " ", "Rd"}], "-", 
-         RowBox[{"Rb", " ", "Re"}], "-", 
-         RowBox[{"Rc", " ", "Re"}]}], ")"}]}], 
-      RowBox[{
-       RowBox[{"Ra", " ", "Rb", " ", "Rc"}], "+", 
-       RowBox[{"Ra", " ", "Rb", " ", "Rd"}], "+", 
-       RowBox[{"Rb", " ", "Rc", " ", "Rd"}], "+", 
-       RowBox[{"Ra", " ", "Rb", " ", "Re"}], "+", 
-       RowBox[{"Ra", " ", "Rc", " ", "Re"}], "+", 
-       RowBox[{"Ra", " ", "Rd", " ", "Re"}], "+", 
-       RowBox[{"Rb", " ", "Rd", " ", "Re"}], "+", 
-       RowBox[{"Rc", " ", "Rd", " ", "Re"}], "+", 
-       RowBox[{"Ra", " ", "Rc", " ", "Rf"}], "+", 
-       RowBox[{"Rb", " ", "Rc", " ", "Rf"}], "+", 
-       RowBox[{"Ra", " ", "Rd", " ", "Rf"}], "+", 
-       RowBox[{"Rb", " ", "Rd", " ", "Rf"}], "+", 
-       RowBox[{"Rc", " ", "Rd", " ", "Rf"}], "+", 
-       RowBox[{"Ra", " ", "Re", " ", "Rf"}], "+", 
-       RowBox[{"Rb", " ", "Re", " ", "Rf"}], "+", 
-       RowBox[{"Rc", " ", "Re", " ", "Rf"}]}]]}], "}"}], ",", 
-   RowBox[{"{", 
-    RowBox[{
-     FractionBox[
-      RowBox[{"2", " ", "Rb", " ", 
-       RowBox[{"(", 
-        RowBox[{
-         RowBox[{"Rd", " ", "Re"}], "+", 
-         RowBox[{"Rc", " ", "Rf"}], "+", 
-         RowBox[{"Rd", " ", "Rf"}], "+", 
-         RowBox[{"Re", " ", "Rf"}]}], ")"}]}], 
-      RowBox[{
-       RowBox[{"Ra", " ", "Rb", " ", "Rc"}], "+", 
-       RowBox[{"Ra", " ", "Rb", " ", "Rd"}], "+", 
-       RowBox[{"Rb", " ", "Rc", " ", "Rd"}], "+", 
-       RowBox[{"Ra", " ", "Rb", " ", "Re"}], "+", 
-       RowBox[{"Ra", " ", "Rc", " ", "Re"}], "+", 
-       RowBox[{"Ra", " ", "Rd", " ", "Re"}], "+", 
-       RowBox[{"Rb", " ", "Rd", " ", "Re"}], "+", 
-       RowBox[{"Rc", " ", "Rd", " ", "Re"}], "+", 
-       RowBox[{"Ra", " ", "Rc", " ", "Rf"}], "+", 
-       RowBox[{"Rb", " ", "Rc", " ", "Rf"}], "+", 
-       RowBox[{"Ra", " ", "Rd", " ", "Rf"}], "+", 
-       RowBox[{"Rb", " ", "Rd", " ", "Rf"}], "+", 
-       RowBox[{"Rc", " ", "Rd", " ", "Rf"}], "+", 
-       RowBox[{"Ra", " ", "Re", " ", "Rf"}], "+", 
-       RowBox[{"Rb", " ", "Re", " ", "Rf"}], "+", 
-       RowBox[{"Rc", " ", "Re", " ", "Rf"}]}]], ",", 
-     RowBox[{"1", "+", 
-      FractionBox[
-       RowBox[{"2", " ", "Rb", " ", 
-        RowBox[{"(", 
-         RowBox[{
-          RowBox[{
-           RowBox[{"-", "Ra"}], " ", "Rc"}], "-", 
-          RowBox[{"Ra", " ", "Rd"}], "-", 
-          RowBox[{"Rc", " ", "Rd"}], "-", 
-          RowBox[{"Ra", " ", "Re"}], "-", 
-          RowBox[{"Rd", " ", "Re"}], "-", 
-          RowBox[{"Rc", " ", "Rf"}], "-", 
-          RowBox[{"Rd", " ", "Rf"}], "-", 
-          RowBox[{"Re", " ", "Rf"}]}], ")"}]}], 
-       RowBox[{
-        RowBox[{"Ra", " ", "Rb", " ", "Rc"}], "+", 
-        RowBox[{"Ra", " ", "Rb", " ", "Rd"}], "+", 
-        RowBox[{"Rb", " ", "Rc", " ", "Rd"}], "+", 
-        RowBox[{"Ra", " ", "Rb", " ", "Re"}], "+", 
-        RowBox[{"Ra", " ", "Rc", " ", "Re"}], "+", 
-        RowBox[{"Ra", " ", "Rd", " ", "Re"}], "+", 
-        RowBox[{"Rb", " ", "Rd", " ", "Re"}], "+", 
-        RowBox[{"Rc", " ", "Rd", " ", "Re"}], "+", 
-        RowBox[{"Ra", " ", "Rc", " ", "Rf"}], "+", 
-        RowBox[{"Rb", " ", "Rc", " ", "Rf"}], "+", 
-        RowBox[{"Ra", " ", "Rd", " ", "Rf"}], "+", 
-        RowBox[{"Rb", " ", "Rd", " ", "Rf"}], "+", 
-        RowBox[{"Rc", " ", "Rd", " ", "Rf"}], "+", 
-        RowBox[{"Ra", " ", "Re", " ", "Rf"}], "+", 
-        RowBox[{"Rb", " ", "Re", " ", "Rf"}], "+", 
-        RowBox[{"Rc", " ", "Re", " ", "Rf"}]}]]}], ",", 
-     FractionBox[
-      RowBox[{"2", " ", "Rb", " ", 
-       RowBox[{"(", 
-        RowBox[{
-         RowBox[{
-          RowBox[{"-", "Ra"}], " ", "Re"}], "-", 
-         RowBox[{"Rd", " ", "Re"}], "-", 
-         RowBox[{"Rd", " ", "Rf"}], "-", 
-         RowBox[{"Re", " ", "Rf"}]}], ")"}]}], 
-      RowBox[{
-       RowBox[{"Ra", " ", "Rb", " ", "Rc"}], "+", 
-       RowBox[{"Ra", " ", "Rb", " ", "Rd"}], "+", 
-       RowBox[{"Rb", " ", "Rc", " ", "Rd"}], "+", 
-       RowBox[{"Ra", " ", "Rb", " ", "Re"}], "+", 
-       RowBox[{"Ra", " ", "Rc", " ", "Re"}], "+", 
-       RowBox[{"Ra", " ", "Rd", " ", "Re"}], "+", 
-       RowBox[{"Rb", " ", "Rd", " ", "Re"}], "+", 
-       RowBox[{"Rc", " ", "Rd", " ", "Re"}], "+", 
-       RowBox[{"Ra", " ", "Rc", " ", "Rf"}], "+", 
-       RowBox[{"Rb", " ", "Rc", " ", "Rf"}], "+", 
-       RowBox[{"Ra", " ", "Rd", " ", "Rf"}], "+", 
-       RowBox[{"Rb", " ", "Rd", " ", "Rf"}], "+", 
-       RowBox[{"Rc", " ", "Rd", " ", "Rf"}], "+", 
-       RowBox[{"Ra", " ", "Re", " ", "Rf"}], "+", 
-       RowBox[{"Rb", " ", "Re", " ", "Rf"}], "+", 
-       RowBox[{"Rc", " ", "Re", " ", "Rf"}]}]], ",", 
-     FractionBox[
-      RowBox[{"2", " ", "Rb", " ", 
-       RowBox[{"(", 
-        RowBox[{
-         RowBox[{
-          RowBox[{"-", "Ra"}], " ", "Re"}], "+", 
-         RowBox[{"Rc", " ", "Rf"}]}], ")"}]}], 
-      RowBox[{
-       RowBox[{"Ra", " ", "Rb", " ", "Rc"}], "+", 
-       RowBox[{"Ra", " ", "Rb", " ", "Rd"}], "+", 
-       RowBox[{"Rb", " ", "Rc", " ", "Rd"}], "+", 
-       RowBox[{"Ra", " ", "Rb", " ", "Re"}], "+", 
-       RowBox[{"Ra", " ", "Rc", " ", "Re"}], "+", 
-       RowBox[{"Ra", " ", "Rd", " ", "Re"}], "+", 
-       RowBox[{"Rb", " ", "Rd", " ", "Re"}], "+", 
-       RowBox[{"Rc", " ", "Rd", " ", "Re"}], "+", 
-       RowBox[{"Ra", " ", "Rc", " ", "Rf"}], "+", 
-       RowBox[{"Rb", " ", "Rc", " ", "Rf"}], "+", 
-       RowBox[{"Ra", " ", "Rd", " ", "Rf"}], "+", 
-       RowBox[{"Rb", " ", "Rd", " ", "Rf"}], "+", 
-       RowBox[{"Rc", " ", "Rd", " ", "Rf"}], "+", 
-       RowBox[{"Ra", " ", "Re", " ", "Rf"}], "+", 
-       RowBox[{"Rb", " ", "Re", " ", "Rf"}], "+", 
-       RowBox[{"Rc", " ", "Re", " ", "Rf"}]}]], ",", 
-     FractionBox[
-      RowBox[{"2", " ", "Rb", " ", 
-       RowBox[{"(", 
-        RowBox[{
-         RowBox[{"Ra", " ", "Rc"}], "+", 
-         RowBox[{"Ra", " ", "Rd"}], "+", 
-         RowBox[{"Rc", " ", "Rd"}], "+", 
-         RowBox[{"Rc", " ", "Rf"}]}], ")"}]}], 
-      RowBox[{
-       RowBox[{"Ra", " ", "Rb", " ", "Rc"}], "+", 
-       RowBox[{"Ra", " ", "Rb", " ", "Rd"}], "+", 
-       RowBox[{"Rb", " ", "Rc", " ", "Rd"}], "+", 
-       RowBox[{"Ra", " ", "Rb", " ", "Re"}], "+", 
-       RowBox[{"Ra", " ", "Rc", " ", "Re"}], "+", 
-       RowBox[{"Ra", " ", "Rd", " ", "Re"}], "+", 
-       RowBox[{"Rb", " ", "Rd", " ", "Re"}], "+", 
-       RowBox[{"Rc", " ", "Rd", " ", "Re"}], "+", 
-       RowBox[{"Ra", " ", "Rc", " ", "Rf"}], "+", 
-       RowBox[{"Rb", " ", "Rc", " ", "Rf"}], "+", 
-       RowBox[{"Ra", " ", "Rd", " ", "Rf"}], "+", 
-       RowBox[{"Rb", " ", "Rd", " ", "Rf"}], "+", 
-       RowBox[{"Rc", " ", "Rd", " ", "Rf"}], "+", 
-       RowBox[{"Ra", " ", "Re", " ", "Rf"}], "+", 
-       RowBox[{"Rb", " ", "Re", " ", "Rf"}], "+", 
-       RowBox[{"Rc", " ", "Re", " ", "Rf"}]}]], ",", 
-     FractionBox[
-      RowBox[{"2", " ", "Rb", " ", 
-       RowBox[{"(", 
-        RowBox[{
-         RowBox[{
-          RowBox[{"-", "Ra"}], " ", "Rc"}], "-", 
-         RowBox[{"Ra", " ", "Rd"}], "-", 
-         RowBox[{"Rc", " ", "Rd"}], "-", 
-         RowBox[{"Ra", " ", "Re"}]}], ")"}]}], 
-      RowBox[{
-       RowBox[{"Ra", " ", "Rb", " ", "Rc"}], "+", 
-       RowBox[{"Ra", " ", "Rb", " ", "Rd"}], "+", 
-       RowBox[{"Rb", " ", "Rc", " ", "Rd"}], "+", 
-       RowBox[{"Ra", " ", "Rb", " ", "Re"}], "+", 
-       RowBox[{"Ra", " ", "Rc", " ", "Re"}], "+", 
-       RowBox[{"Ra", " ", "Rd", " ", "Re"}], "+", 
-       RowBox[{"Rb", " ", "Rd", " ", "Re"}], "+", 
-       RowBox[{"Rc", " ", "Rd", " ", "Re"}], "+", 
-       RowBox[{"Ra", " ", "Rc", " ", "Rf"}], "+", 
-       RowBox[{"Rb", " ", "Rc", " ", "Rf"}], "+", 
-       RowBox[{"Ra", " ", "Rd", " ", "Rf"}], "+", 
-       RowBox[{"Rb", " ", "Rd", " ", "Rf"}], "+", 
-       RowBox[{"Rc", " ", "Rd", " ", "Rf"}], "+", 
-       RowBox[{"Ra", " ", "Re", " ", "Rf"}], "+", 
-       RowBox[{"Rb", " ", "Re", " ", "Rf"}], "+", 
-       RowBox[{"Rc", " ", "Re", " ", "Rf"}]}]]}], "}"}], ",", 
-   RowBox[{"{", 
-    RowBox[{
-     FractionBox[
-      RowBox[{"2", " ", "Rc", " ", 
-       RowBox[{"(", 
-        RowBox[{
-         RowBox[{"Rb", " ", "Rd"}], "+", 
-         RowBox[{"Rd", " ", "Re"}], "+", 
-         RowBox[{"Rd", " ", "Rf"}], "+", 
-         RowBox[{"Re", " ", "Rf"}]}], ")"}]}], 
-      RowBox[{
-       RowBox[{"Ra", " ", "Rb", " ", "Rc"}], "+", 
-       RowBox[{"Ra", " ", "Rb", " ", "Rd"}], "+", 
-       RowBox[{"Rb", " ", "Rc", " ", "Rd"}], "+", 
-       RowBox[{"Ra", " ", "Rb", " ", "Re"}], "+", 
-       RowBox[{"Ra", " ", "Rc", " ", "Re"}], "+", 
-       RowBox[{"Ra", " ", "Rd", " ", "Re"}], "+", 
-       RowBox[{"Rb", " ", "Rd", " ", "Re"}], "+", 
-       RowBox[{"Rc", " ", "Rd", " ", "Re"}], "+", 
-       RowBox[{"Ra", " ", "Rc", " ", "Rf"}], "+", 
-       RowBox[{"Rb", " ", "Rc", " ", "Rf"}], "+", 
-       RowBox[{"Ra", " ", "Rd", " ", "Rf"}], "+", 
-       RowBox[{"Rb", " ", "Rd", " ", "Rf"}], "+", 
-       RowBox[{"Rc", " ", "Rd", " ", "Rf"}], "+", 
-       RowBox[{"Ra", " ", "Re", " ", "Rf"}], "+", 
-       RowBox[{"Rb", " ", "Re", " ", "Rf"}], "+", 
-       RowBox[{"Rc", " ", "Re", " ", "Rf"}]}]], ",", 
-     FractionBox[
-      RowBox[{"2", " ", "Rc", " ", 
-       RowBox[{"(", 
-        RowBox[{
-         RowBox[{
-          RowBox[{"-", "Ra"}], " ", "Re"}], "-", 
-         RowBox[{"Rd", " ", "Re"}], "-", 
-         RowBox[{"Rd", " ", "Rf"}], "-", 
-         RowBox[{"Re", " ", "Rf"}]}], ")"}]}], 
-      RowBox[{
-       RowBox[{"Ra", " ", "Rb", " ", "Rc"}], "+", 
-       RowBox[{"Ra", " ", "Rb", " ", "Rd"}], "+", 
-       RowBox[{"Rb", " ", "Rc", " ", "Rd"}], "+", 
-       RowBox[{"Ra", " ", "Rb", " ", "Re"}], "+", 
-       RowBox[{"Ra", " ", "Rc", " ", "Re"}], "+", 
-       RowBox[{"Ra", " ", "Rd", " ", "Re"}], "+", 
-       RowBox[{"Rb", " ", "Rd", " ", "Re"}], "+", 
-       RowBox[{"Rc", " ", "Rd", " ", "Re"}], "+", 
-       RowBox[{"Ra", " ", "Rc", " ", "Rf"}], "+", 
-       RowBox[{"Rb", " ", "Rc", " ", "Rf"}], "+", 
-       RowBox[{"Ra", " ", "Rd", " ", "Rf"}], "+", 
-       RowBox[{"Rb", " ", "Rd", " ", "Rf"}], "+", 
-       RowBox[{"Rc", " ", "Rd", " ", "Rf"}], "+", 
-       RowBox[{"Ra", " ", "Re", " ", "Rf"}], "+", 
-       RowBox[{"Rb", " ", "Re", " ", "Rf"}], "+", 
-       RowBox[{"Rc", " ", "Re", " ", "Rf"}]}]], ",", 
-     RowBox[{"1", "+", 
-      FractionBox[
-       RowBox[{"2", " ", "Rc", " ", 
-        RowBox[{"(", 
-         RowBox[{
-          RowBox[{
-           RowBox[{"-", "Ra"}], " ", "Rb"}], "-", 
-          RowBox[{"Rb", " ", "Rd"}], "-", 
-          RowBox[{"Ra", " ", "Re"}], "-", 
-          RowBox[{"Rd", " ", "Re"}], "-", 
-          RowBox[{"Ra", " ", "Rf"}], "-", 
-          RowBox[{"Rb", " ", "Rf"}], "-", 
-          RowBox[{"Rd", " ", "Rf"}], "-", 
-          RowBox[{"Re", " ", "Rf"}]}], ")"}]}], 
-       RowBox[{
-        RowBox[{"Ra", " ", "Rb", " ", "Rc"}], "+", 
-        RowBox[{"Ra", " ", "Rb", " ", "Rd"}], "+", 
-        RowBox[{"Rb", " ", "Rc", " ", "Rd"}], "+", 
-        RowBox[{"Ra", " ", "Rb", " ", "Re"}], "+", 
-        RowBox[{"Ra", " ", "Rc", " ", "Re"}], "+", 
-        RowBox[{"Ra", " ", "Rd", " ", "Re"}], "+", 
-        RowBox[{"Rb", " ", "Rd", " ", "Re"}], "+", 
-        RowBox[{"Rc", " ", "Rd", " ", "Re"}], "+", 
-        RowBox[{"Ra", " ", "Rc", " ", "Rf"}], "+", 
-        RowBox[{"Rb", " ", "Rc", " ", "Rf"}], "+", 
-        RowBox[{"Ra", " ", "Rd", " ", "Rf"}], "+", 
-        RowBox[{"Rb", " ", "Rd", " ", "Rf"}], "+", 
-        RowBox[{"Rc", " ", "Rd", " ", "Rf"}], "+", 
-        RowBox[{"Ra", " ", "Re", " ", "Rf"}], "+", 
-        RowBox[{"Rb", " ", "Re", " ", "Rf"}], "+", 
-        RowBox[{"Rc", " ", "Re", " ", "Rf"}]}]]}], ",", 
-     FractionBox[
-      RowBox[{"2", " ", "Rc", " ", 
-       RowBox[{"(", 
-        RowBox[{
-         RowBox[{
-          RowBox[{"-", "Ra"}], " ", "Rb"}], "-", 
-         RowBox[{"Ra", " ", "Re"}], "-", 
-         RowBox[{"Ra", " ", "Rf"}], "-", 
-         RowBox[{"Rb", " ", "Rf"}]}], ")"}]}], 
-      RowBox[{
-       RowBox[{"Ra", " ", "Rb", " ", "Rc"}], "+", 
-       RowBox[{"Ra", " ", "Rb", " ", "Rd"}], "+", 
-       RowBox[{"Rb", " ", "Rc", " ", "Rd"}], "+", 
-       RowBox[{"Ra", " ", "Rb", " ", "Re"}], "+", 
-       RowBox[{"Ra", " ", "Rc", " ", "Re"}], "+", 
-       RowBox[{"Ra", " ", "Rd", " ", "Re"}], "+", 
-       RowBox[{"Rb", " ", "Rd", " ", "Re"}], "+", 
-       RowBox[{"Rc", " ", "Rd", " ", "Re"}], "+", 
-       RowBox[{"Ra", " ", "Rc", " ", "Rf"}], "+", 
-       RowBox[{"Rb", " ", "Rc", " ", "Rf"}], "+", 
-       RowBox[{"Ra", " ", "Rd", " ", "Rf"}], "+", 
-       RowBox[{"Rb", " ", "Rd", " ", "Rf"}], "+", 
-       RowBox[{"Rc", " ", "Rd", " ", "Rf"}], "+", 
-       RowBox[{"Ra", " ", "Re", " ", "Rf"}], "+", 
-       RowBox[{"Rb", " ", "Re", " ", "Rf"}], "+", 
-       RowBox[{"Rc", " ", "Re", " ", "Rf"}]}]], ",", 
-     FractionBox[
-      RowBox[{"2", " ", "Rc", " ", 
-       RowBox[{"(", 
-        RowBox[{
-         RowBox[{
-          RowBox[{"-", "Ra"}], " ", "Rb"}], "-", 
-         RowBox[{"Rb", " ", "Rd"}], "-", 
-         RowBox[{"Ra", " ", "Rf"}], "-", 
-         RowBox[{"Rb", " ", "Rf"}]}], ")"}]}], 
-      RowBox[{
-       RowBox[{"Ra", " ", "Rb", " ", "Rc"}], "+", 
-       RowBox[{"Ra", " ", "Rb", " ", "Rd"}], "+", 
-       RowBox[{"Rb", " ", "Rc", " ", "Rd"}], "+", 
-       RowBox[{"Ra", " ", "Rb", " ", "Re"}], "+", 
-       RowBox[{"Ra", " ", "Rc", " ", "Re"}], "+", 
-       RowBox[{"Ra", " ", "Rd", " ", "Re"}], "+", 
-       RowBox[{"Rb", " ", "Rd", " ", "Re"}], "+", 
-       RowBox[{"Rc", " ", "Rd", " ", "Re"}], "+", 
-       RowBox[{"Ra", " ", "Rc", " ", "Rf"}], "+", 
-       RowBox[{"Rb", " ", "Rc", " ", "Rf"}], "+", 
-       RowBox[{"Ra", " ", "Rd", " ", "Rf"}], "+", 
-       RowBox[{"Rb", " ", "Rd", " ", "Rf"}], "+", 
-       RowBox[{"Rc", " ", "Rd", " ", "Rf"}], "+", 
-       RowBox[{"Ra", " ", "Re", " ", "Rf"}], "+", 
-       RowBox[{"Rb", " ", "Re", " ", "Rf"}], "+", 
-       RowBox[{"Rc", " ", "Re", " ", "Rf"}]}]], ",", 
-     FractionBox[
-      RowBox[{"2", " ", "Rc", " ", 
-       RowBox[{"(", 
-        RowBox[{
-         RowBox[{"Rb", " ", "Rd"}], "-", 
-         RowBox[{"Ra", " ", "Re"}]}], ")"}]}], 
-      RowBox[{
-       RowBox[{"Ra", " ", "Rb", " ", "Rc"}], "+", 
-       RowBox[{"Ra", " ", "Rb", " ", "Rd"}], "+", 
-       RowBox[{"Rb", " ", "Rc", " ", "Rd"}], "+", 
-       RowBox[{"Ra", " ", "Rb", " ", "Re"}], "+", 
-       RowBox[{"Ra", " ", "Rc", " ", "Re"}], "+", 
-       RowBox[{"Ra", " ", "Rd", " ", "Re"}], "+", 
-       RowBox[{"Rb", " ", "Rd", " ", "Re"}], "+", 
-       RowBox[{"Rc", " ", "Rd", " ", "Re"}], "+", 
-       RowBox[{"Ra", " ", "Rc", " ", "Rf"}], "+", 
-       RowBox[{"Rb", " ", "Rc", " ", "Rf"}], "+", 
-       RowBox[{"Ra", " ", "Rd", " ", "Rf"}], "+", 
-       RowBox[{"Rb", " ", "Rd", " ", "Rf"}], "+", 
-       RowBox[{"Rc", " ", "Rd", " ", "Rf"}], "+", 
-       RowBox[{"Ra", " ", "Re", " ", "Rf"}], "+", 
-       RowBox[{"Rb", " ", "Re", " ", "Rf"}], "+", 
-       RowBox[{"Rc", " ", "Re", " ", "Rf"}]}]]}], "}"}], ",", 
-   RowBox[{"{", 
-    RowBox[{
-     FractionBox[
-      RowBox[{"2", " ", "Rd", " ", 
-       RowBox[{"(", 
-        RowBox[{
-         RowBox[{
-          RowBox[{"-", "Rb"}], " ", "Rc"}], "-", 
-         RowBox[{"Rb", " ", "Re"}], "-", 
-         RowBox[{"Rc", " ", "Re"}], "-", 
-         RowBox[{"Rc", " ", "Rf"}]}], ")"}]}], 
-      RowBox[{
-       RowBox[{"Ra", " ", "Rb", " ", "Rc"}], "+", 
-       RowBox[{"Ra", " ", "Rb", " ", "Rd"}], "+", 
-       RowBox[{"Rb", " ", "Rc", " ", "Rd"}], "+", 
-       RowBox[{"Ra", " ", "Rb", " ", "Re"}], "+", 
-       RowBox[{"Ra", " ", "Rc", " ", "Re"}], "+", 
-       RowBox[{"Ra", " ", "Rd", " ", "Re"}], "+", 
-       RowBox[{"Rb", " ", "Rd", " ", "Re"}], "+", 
-       RowBox[{"Rc", " ", "Rd", " ", "Re"}], "+", 
-       RowBox[{"Ra", " ", "Rc", " ", "Rf"}], "+", 
-       RowBox[{"Rb", " ", "Rc", " ", "Rf"}], "+", 
-       RowBox[{"Ra", " ", "Rd", " ", "Rf"}], "+", 
-       RowBox[{"Rb", " ", "Rd", " ", "Rf"}], "+", 
-       RowBox[{"Rc", " ", "Rd", " ", "Rf"}], "+", 
-       RowBox[{"Ra", " ", "Re", " ", "Rf"}], "+", 
-       RowBox[{"Rb", " ", "Re", " ", "Rf"}], "+", 
-       RowBox[{"Rc", " ", "Re", " ", "Rf"}]}]], ",", 
-     FractionBox[
-      RowBox[{"2", " ", "Rd", " ", 
-       RowBox[{"(", 
-        RowBox[{
-         RowBox[{
-          RowBox[{"-", "Ra"}], " ", "Re"}], "+", 
-         RowBox[{"Rc", " ", "Rf"}]}], ")"}]}], 
-      RowBox[{
-       RowBox[{"Ra", " ", "Rb", " ", "Rc"}], "+", 
-       RowBox[{"Ra", " ", "Rb", " ", "Rd"}], "+", 
-       RowBox[{"Rb", " ", "Rc", " ", "Rd"}], "+", 
-       RowBox[{"Ra", " ", "Rb", " ", "Re"}], "+", 
-       RowBox[{"Ra", " ", "Rc", " ", "Re"}], "+", 
-       RowBox[{"Ra", " ", "Rd", " ", "Re"}], "+", 
-       RowBox[{"Rb", " ", "Rd", " ", "Re"}], "+", 
-       RowBox[{"Rc", " ", "Rd", " ", "Re"}], "+", 
-       RowBox[{"Ra", " ", "Rc", " ", "Rf"}], "+", 
-       RowBox[{"Rb", " ", "Rc", " ", "Rf"}], "+", 
-       RowBox[{"Ra", " ", "Rd", " ", "Rf"}], "+", 
-       RowBox[{"Rb", " ", "Rd", " ", "Rf"}], "+", 
-       RowBox[{"Rc", " ", "Rd", " ", "Rf"}], "+", 
-       RowBox[{"Ra", " ", "Re", " ", "Rf"}], "+", 
-       RowBox[{"Rb", " ", "Re", " ", "Rf"}], "+", 
-       RowBox[{"Rc", " ", "Re", " ", "Rf"}]}]], ",", 
-     FractionBox[
-      RowBox[{"2", " ", "Rd", " ", 
-       RowBox[{"(", 
-        RowBox[{
-         RowBox[{
-          RowBox[{"-", "Ra"}], " ", "Rb"}], "-", 
-         RowBox[{"Ra", " ", "Re"}], "-", 
-         RowBox[{"Ra", " ", "Rf"}], "-", 
-         RowBox[{"Rb", " ", "Rf"}]}], ")"}]}], 
-      RowBox[{
-       RowBox[{"Ra", " ", "Rb", " ", "Rc"}], "+", 
-       RowBox[{"Ra", " ", "Rb", " ", "Rd"}], "+", 
-       RowBox[{"Rb", " ", "Rc", " ", "Rd"}], "+", 
-       RowBox[{"Ra", " ", "Rb", " ", "Re"}], "+", 
-       RowBox[{"Ra", " ", "Rc", " ", "Re"}], "+", 
-       RowBox[{"Ra", " ", "Rd", " ", "Re"}], "+", 
-       RowBox[{"Rb", " ", "Rd", " ", "Re"}], "+", 
-       RowBox[{"Rc", " ", "Rd", " ", "Re"}], "+", 
-       RowBox[{"Ra", " ", "Rc", " ", "Rf"}], "+", 
-       RowBox[{"Rb", " ", "Rc", " ", "Rf"}], "+", 
-       RowBox[{"Ra", " ", "Rd", " ", "Rf"}], "+", 
-       RowBox[{"Rb", " ", "Rd", " ", "Rf"}], "+", 
-       RowBox[{"Rc", " ", "Rd", " ", "Rf"}], "+", 
-       RowBox[{"Ra", " ", "Re", " ", "Rf"}], "+", 
-       RowBox[{"Rb", " ", "Re", " ", "Rf"}], "+", 
-       RowBox[{"Rc", " ", "Re", " ", "Rf"}]}]], ",", 
-     RowBox[{"1", "+", 
-      FractionBox[
-       RowBox[{"2", " ", "Rd", " ", 
-        RowBox[{"(", 
-         RowBox[{
-          RowBox[{
-           RowBox[{"-", "Ra"}], " ", "Rb"}], "-", 
-          RowBox[{"Rb", " ", "Rc"}], "-", 
-          RowBox[{"Ra", " ", "Re"}], "-", 
-          RowBox[{"Rb", " ", "Re"}], "-", 
-          RowBox[{"Rc", " ", "Re"}], "-", 
-          RowBox[{"Ra", " ", "Rf"}], "-", 
-          RowBox[{"Rb", " ", "Rf"}], "-", 
-          RowBox[{"Rc", " ", "Rf"}]}], ")"}]}], 
-       RowBox[{
-        RowBox[{"Ra", " ", "Rb", " ", "Rc"}], "+", 
-        RowBox[{"Ra", " ", "Rb", " ", "Rd"}], "+", 
-        RowBox[{"Rb", " ", "Rc", " ", "Rd"}], "+", 
-        RowBox[{"Ra", " ", "Rb", " ", "Re"}], "+", 
-        RowBox[{"Ra", " ", "Rc", " ", "Re"}], "+", 
-        RowBox[{"Ra", " ", "Rd", " ", "Re"}], "+", 
-        RowBox[{"Rb", " ", "Rd", " ", "Re"}], "+", 
-        RowBox[{"Rc", " ", "Rd", " ", "Re"}], "+", 
-        RowBox[{"Ra", " ", "Rc", " ", "Rf"}], "+", 
-        RowBox[{"Rb", " ", "Rc", " ", "Rf"}], "+", 
-        RowBox[{"Ra", " ", "Rd", " ", "Rf"}], "+", 
-        RowBox[{"Rb", " ", "Rd", " ", "Rf"}], "+", 
-        RowBox[{"Rc", " ", "Rd", " ", "Rf"}], "+", 
-        RowBox[{"Ra", " ", "Re", " ", "Rf"}], "+", 
-        RowBox[{"Rb", " ", "Re", " ", "Rf"}], "+", 
-        RowBox[{"Rc", " ", "Re", " ", "Rf"}]}]]}], ",", 
-     FractionBox[
-      RowBox[{"2", " ", "Rd", " ", 
-       RowBox[{"(", 
-        RowBox[{
-         RowBox[{
-          RowBox[{"-", "Ra"}], " ", "Rb"}], "-", 
-         RowBox[{"Ra", " ", "Rf"}], "-", 
-         RowBox[{"Rb", " ", "Rf"}], "-", 
-         RowBox[{"Rc", " ", "Rf"}]}], ")"}]}], 
-      RowBox[{
-       RowBox[{"Ra", " ", "Rb", " ", "Rc"}], "+", 
-       RowBox[{"Ra", " ", "Rb", " ", "Rd"}], "+", 
-       RowBox[{"Rb", " ", "Rc", " ", "Rd"}], "+", 
-       RowBox[{"Ra", " ", "Rb", " ", "Re"}], "+", 
-       RowBox[{"Ra", " ", "Rc", " ", "Re"}], "+", 
-       RowBox[{"Ra", " ", "Rd", " ", "Re"}], "+", 
-       RowBox[{"Rb", " ", "Rd", " ", "Re"}], "+", 
-       RowBox[{"Rc", " ", "Rd", " ", "Re"}], "+", 
-       RowBox[{"Ra", " ", "Rc", " ", "Rf"}], "+", 
-       RowBox[{"Rb", " ", "Rc", " ", "Rf"}], "+", 
-       RowBox[{"Ra", " ", "Rd", " ", "Rf"}], "+", 
-       RowBox[{"Rb", " ", "Rd", " ", "Rf"}], "+", 
-       RowBox[{"Rc", " ", "Rd", " ", "Rf"}], "+", 
-       RowBox[{"Ra", " ", "Re", " ", "Rf"}], "+", 
-       RowBox[{"Rb", " ", "Re", " ", "Rf"}], "+", 
-       RowBox[{"Rc", " ", "Re", " ", "Rf"}]}]], ",", 
-     FractionBox[
-      RowBox[{"2", " ", "Rd", " ", 
-       RowBox[{"(", 
-        RowBox[{
-         RowBox[{
-          RowBox[{"-", "Rb"}], " ", "Rc"}], "-", 
-         RowBox[{"Ra", " ", "Re"}], "-", 
-         RowBox[{"Rb", " ", "Re"}], "-", 
-         RowBox[{"Rc", " ", "Re"}]}], ")"}]}], 
-      RowBox[{
-       RowBox[{"Ra", " ", "Rb", " ", "Rc"}], "+", 
-       RowBox[{"Ra", " ", "Rb", " ", "Rd"}], "+", 
-       RowBox[{"Rb", " ", "Rc", " ", "Rd"}], "+", 
-       RowBox[{"Ra", " ", "Rb", " ", "Re"}], "+", 
-       RowBox[{"Ra", " ", "Rc", " ", "Re"}], "+", 
-       RowBox[{"Ra", " ", "Rd", " ", "Re"}], "+", 
-       RowBox[{"Rb", " ", "Rd", " ", "Re"}], "+", 
-       RowBox[{"Rc", " ", "Rd", " ", "Re"}], "+", 
-       RowBox[{"Ra", " ", "Rc", " ", "Rf"}], "+", 
-       RowBox[{"Rb", " ", "Rc", " ", "Rf"}], "+", 
-       RowBox[{"Ra", " ", "Rd", " ", "Rf"}], "+", 
-       RowBox[{"Rb", " ", "Rd", " ", "Rf"}], "+", 
-       RowBox[{"Rc", " ", "Rd", " ", "Rf"}], "+", 
-       RowBox[{"Ra", " ", "Re", " ", "Rf"}], "+", 
-       RowBox[{"Rb", " ", "Re", " ", "Rf"}], "+", 
-       RowBox[{"Rc", " ", "Re", " ", "Rf"}]}]]}], "}"}], ",", 
-   RowBox[{"{", 
-    RowBox[{
-     FractionBox[
-      RowBox[{"2", " ", "Re", " ", 
-       RowBox[{"(", 
-        RowBox[{
-         RowBox[{"Rb", " ", "Rd"}], "-", 
-         RowBox[{"Rc", " ", "Rf"}]}], ")"}]}], 
-      RowBox[{
-       RowBox[{"Ra", " ", "Rb", " ", "Rc"}], "+", 
-       RowBox[{"Ra", " ", "Rb", " ", "Rd"}], "+", 
-       RowBox[{"Rb", " ", "Rc", " ", "Rd"}], "+", 
-       RowBox[{"Ra", " ", "Rb", " ", "Re"}], "+", 
-       RowBox[{"Ra", " ", "Rc", " ", "Re"}], "+", 
-       RowBox[{"Ra", " ", "Rd", " ", "Re"}], "+", 
-       RowBox[{"Rb", " ", "Rd", " ", "Re"}], "+", 
-       RowBox[{"Rc", " ", "Rd", " ", "Re"}], "+", 
-       RowBox[{"Ra", " ", "Rc", " ", "Rf"}], "+", 
-       RowBox[{"Rb", " ", "Rc", " ", "Rf"}], "+", 
-       RowBox[{"Ra", " ", "Rd", " ", "Rf"}], "+", 
-       RowBox[{"Rb", " ", "Rd", " ", "Rf"}], "+", 
-       RowBox[{"Rc", " ", "Rd", " ", "Rf"}], "+", 
-       RowBox[{"Ra", " ", "Re", " ", "Rf"}], "+", 
-       RowBox[{"Rb", " ", "Re", " ", "Rf"}], "+", 
-       RowBox[{"Rc", " ", "Re", " ", "Rf"}]}]], ",", 
-     FractionBox[
-      RowBox[{"2", " ", "Re", " ", 
-       RowBox[{"(", 
-        RowBox[{
-         RowBox[{"Ra", " ", "Rc"}], "+", 
-         RowBox[{"Ra", " ", "Rd"}], "+", 
-         RowBox[{"Rc", " ", "Rd"}], "+", 
-         RowBox[{"Rc", " ", "Rf"}]}], ")"}]}], 
-      RowBox[{
-       RowBox[{"Ra", " ", "Rb", " ", "Rc"}], "+", 
-       RowBox[{"Ra", " ", "Rb", " ", "Rd"}], "+", 
-       RowBox[{"Rb", " ", "Rc", " ", "Rd"}], "+", 
-       RowBox[{"Ra", " ", "Rb", " ", "Re"}], "+", 
-       RowBox[{"Ra", " ", "Rc", " ", "Re"}], "+", 
-       RowBox[{"Ra", " ", "Rd", " ", "Re"}], "+", 
-       RowBox[{"Rb", " ", "Rd", " ", "Re"}], "+", 
-       RowBox[{"Rc", " ", "Rd", " ", "Re"}], "+", 
-       RowBox[{"Ra", " ", "Rc", " ", "Rf"}], "+", 
-       RowBox[{"Rb", " ", "Rc", " ", "Rf"}], "+", 
-       RowBox[{"Ra", " ", "Rd", " ", "Rf"}], "+", 
-       RowBox[{"Rb", " ", "Rd", " ", "Rf"}], "+", 
-       RowBox[{"Rc", " ", "Rd", " ", "Rf"}], "+", 
-       RowBox[{"Ra", " ", "Re", " ", "Rf"}], "+", 
-       RowBox[{"Rb", " ", "Re", " ", "Rf"}], "+", 
-       RowBox[{"Rc", " ", "Re", " ", "Rf"}]}]], ",", 
-     FractionBox[
-      RowBox[{"2", " ", "Re", " ", 
-       RowBox[{"(", 
-        RowBox[{
-         RowBox[{
-          RowBox[{"-", "Ra"}], " ", "Rb"}], "-", 
-         RowBox[{"Rb", " ", "Rd"}], "-", 
-         RowBox[{"Ra", " ", "Rf"}], "-", 
-         RowBox[{"Rb", " ", "Rf"}]}], ")"}]}], 
-      RowBox[{
-       RowBox[{"Ra", " ", "Rb", " ", "Rc"}], "+", 
-       RowBox[{"Ra", " ", "Rb", " ", "Rd"}], "+", 
-       RowBox[{"Rb", " ", "Rc", " ", "Rd"}], "+", 
-       RowBox[{"Ra", " ", "Rb", " ", "Re"}], "+", 
-       RowBox[{"Ra", " ", "Rc", " ", "Re"}], "+", 
-       RowBox[{"Ra", " ", "Rd", " ", "Re"}], "+", 
-       RowBox[{"Rb", " ", "Rd", " ", "Re"}], "+", 
-       RowBox[{"Rc", " ", "Rd", " ", "Re"}], "+", 
-       RowBox[{"Ra", " ", "Rc", " ", "Rf"}], "+", 
-       RowBox[{"Rb", " ", "Rc", " ", "Rf"}], "+", 
-       RowBox[{"Ra", " ", "Rd", " ", "Rf"}], "+", 
-       RowBox[{"Rb", " ", "Rd", " ", "Rf"}], "+", 
-       RowBox[{"Rc", " ", "Rd", " ", "Rf"}], "+", 
-       RowBox[{"Ra", " ", "Re", " ", "Rf"}], "+", 
-       RowBox[{"Rb", " ", "Re", " ", "Rf"}], "+", 
-       RowBox[{"Rc", " ", "Re", " ", "Rf"}]}]], ",", 
-     FractionBox[
-      RowBox[{"2", " ", "Re", " ", 
-       RowBox[{"(", 
-        RowBox[{
-         RowBox[{
-          RowBox[{"-", "Ra"}], " ", "Rb"}], "-", 
-         RowBox[{"Ra", " ", "Rf"}], "-", 
-         RowBox[{"Rb", " ", "Rf"}], "-", 
-         RowBox[{"Rc", " ", "Rf"}]}], ")"}]}], 
-      RowBox[{
-       RowBox[{"Ra", " ", "Rb", " ", "Rc"}], "+", 
-       RowBox[{"Ra", " ", "Rb", " ", "Rd"}], "+", 
-       RowBox[{"Rb", " ", "Rc", " ", "Rd"}], "+", 
-       RowBox[{"Ra", " ", "Rb", " ", "Re"}], "+", 
-       RowBox[{"Ra", " ", "Rc", " ", "Re"}], "+", 
-       RowBox[{"Ra", " ", "Rd", " ", "Re"}], "+", 
-       RowBox[{"Rb", " ", "Rd", " ", "Re"}], "+", 
-       RowBox[{"Rc", " ", "Rd", " ", "Re"}], "+", 
-       RowBox[{"Ra", " ", "Rc", " ", "Rf"}], "+", 
-       RowBox[{"Rb", " ", "Rc", " ", "Rf"}], "+", 
-       RowBox[{"Ra", " ", "Rd", " ", "Rf"}], "+", 
-       RowBox[{"Rb", " ", "Rd", " ", "Rf"}], "+", 
-       RowBox[{"Rc", " ", "Rd", " ", "Rf"}], "+", 
-       RowBox[{"Ra", " ", "Re", " ", "Rf"}], "+", 
-       RowBox[{"Rb", " ", "Re", " ", "Rf"}], "+", 
-       RowBox[{"Rc", " ", "Re", " ", "Rf"}]}]], ",", 
-     RowBox[{"1", "+", 
-      FractionBox[
-       RowBox[{"2", " ", "Re", " ", 
-        RowBox[{"(", 
-         RowBox[{
-          RowBox[{
-           RowBox[{"-", "Ra"}], " ", "Rb"}], "-", 
-          RowBox[{"Ra", " ", "Rc"}], "-", 
-          RowBox[{"Ra", " ", "Rd"}], "-", 
-          RowBox[{"Rb", " ", "Rd"}], "-", 
-          RowBox[{"Rc", " ", "Rd"}], "-", 
-          RowBox[{"Ra", " ", "Rf"}], "-", 
-          RowBox[{"Rb", " ", "Rf"}], "-", 
-          RowBox[{"Rc", " ", "Rf"}]}], ")"}]}], 
-       RowBox[{
-        RowBox[{"Ra", " ", "Rb", " ", "Rc"}], "+", 
-        RowBox[{"Ra", " ", "Rb", " ", "Rd"}], "+", 
-        RowBox[{"Rb", " ", "Rc", " ", "Rd"}], "+", 
-        RowBox[{"Ra", " ", "Rb", " ", "Re"}], "+", 
-        RowBox[{"Ra", " ", "Rc", " ", "Re"}], "+", 
-        RowBox[{"Ra", " ", "Rd", " ", "Re"}], "+", 
-        RowBox[{"Rb", " ", "Rd", " ", "Re"}], "+", 
-        RowBox[{"Rc", " ", "Rd", " ", "Re"}], "+", 
-        RowBox[{"Ra", " ", "Rc", " ", "Rf"}], "+", 
-        RowBox[{"Rb", " ", "Rc", " ", "Rf"}], "+", 
-        RowBox[{"Ra", " ", "Rd", " ", "Rf"}], "+", 
-        RowBox[{"Rb", " ", "Rd", " ", "Rf"}], "+", 
-        RowBox[{"Rc", " ", "Rd", " ", "Rf"}], "+", 
-        RowBox[{"Ra", " ", "Re", " ", "Rf"}], "+", 
-        RowBox[{"Rb", " ", "Re", " ", "Rf"}], "+", 
-        RowBox[{"Rc", " ", "Re", " ", "Rf"}]}]]}], ",", 
-     FractionBox[
-      RowBox[{"2", " ", 
-       RowBox[{"(", 
-        RowBox[{
-         RowBox[{"Ra", " ", "Rc"}], "+", 
-         RowBox[{"Ra", " ", "Rd"}], "+", 
-         RowBox[{"Rb", " ", "Rd"}], "+", 
-         RowBox[{"Rc", " ", "Rd"}]}], ")"}], " ", "Re"}], 
-      RowBox[{
-       RowBox[{"Ra", " ", "Rb", " ", "Rc"}], "+", 
-       RowBox[{"Ra", " ", "Rb", " ", "Rd"}], "+", 
-       RowBox[{"Rb", " ", "Rc", " ", "Rd"}], "+", 
-       RowBox[{"Ra", " ", "Rb", " ", "Re"}], "+", 
-       RowBox[{"Ra", " ", "Rc", " ", "Re"}], "+", 
-       RowBox[{"Ra", " ", "Rd", " ", "Re"}], "+", 
-       RowBox[{"Rb", " ", "Rd", " ", "Re"}], "+", 
-       RowBox[{"Rc", " ", "Rd", " ", "Re"}], "+", 
-       RowBox[{"Ra", " ", "Rc", " ", "Rf"}], "+", 
-       RowBox[{"Rb", " ", "Rc", " ", "Rf"}], "+", 
-       RowBox[{"Ra", " ", "Rd", " ", "Rf"}], "+", 
-       RowBox[{"Rb", " ", "Rd", " ", "Rf"}], "+", 
-       RowBox[{"Rc", " ", "Rd", " ", "Rf"}], "+", 
-       RowBox[{"Ra", " ", "Re", " ", "Rf"}], "+", 
-       RowBox[{"Rb", " ", "Re", " ", "Rf"}], "+", 
-       RowBox[{"Rc", " ", "Re", " ", "Rf"}]}]]}], "}"}], ",", 
-   RowBox[{"{", 
-    RowBox[{
-     FractionBox[
-      RowBox[{"2", " ", 
-       RowBox[{"(", 
-        RowBox[{
-         RowBox[{
-          RowBox[{"-", "Rb"}], " ", "Rc"}], "-", 
-         RowBox[{"Rb", " ", "Rd"}], "-", 
-         RowBox[{"Rb", " ", "Re"}], "-", 
-         RowBox[{"Rc", " ", "Re"}]}], ")"}], " ", "Rf"}], 
-      RowBox[{
-       RowBox[{"Ra", " ", "Rb", " ", "Rc"}], "+", 
-       RowBox[{"Ra", " ", "Rb", " ", "Rd"}], "+", 
-       RowBox[{"Rb", " ", "Rc", " ", "Rd"}], "+", 
-       RowBox[{"Ra", " ", "Rb", " ", "Re"}], "+", 
-       RowBox[{"Ra", " ", "Rc", " ", "Re"}], "+", 
-       RowBox[{"Ra", " ", "Rd", " ", "Re"}], "+", 
-       RowBox[{"Rb", " ", "Rd", " ", "Re"}], "+", 
-       RowBox[{"Rc", " ", "Rd", " ", "Re"}], "+", 
-       RowBox[{"Ra", " ", "Rc", " ", "Rf"}], "+", 
-       RowBox[{"Rb", " ", "Rc", " ", "Rf"}], "+", 
-       RowBox[{"Ra", " ", "Rd", " ", "Rf"}], "+", 
-       RowBox[{"Rb", " ", "Rd", " ", "Rf"}], "+", 
-       RowBox[{"Rc", " ", "Rd", " ", "Rf"}], "+", 
-       RowBox[{"Ra", " ", "Re", " ", "Rf"}], "+", 
-       RowBox[{"Rb", " ", "Re", " ", "Rf"}], "+", 
-       RowBox[{"Rc", " ", "Re", " ", "Rf"}]}]], ",", 
-     FractionBox[
-      RowBox[{"2", " ", 
-       RowBox[{"(", 
-        RowBox[{
-         RowBox[{
-          RowBox[{"-", "Ra"}], " ", "Rc"}], "-", 
-         RowBox[{"Ra", " ", "Rd"}], "-", 
-         RowBox[{"Rc", " ", "Rd"}], "-", 
-         RowBox[{"Ra", " ", "Re"}]}], ")"}], " ", "Rf"}], 
-      RowBox[{
-       RowBox[{"Ra", " ", "Rb", " ", "Rc"}], "+", 
-       RowBox[{"Ra", " ", "Rb", " ", "Rd"}], "+", 
-       RowBox[{"Rb", " ", "Rc", " ", "Rd"}], "+", 
-       RowBox[{"Ra", " ", "Rb", " ", "Re"}], "+", 
-       RowBox[{"Ra", " ", "Rc", " ", "Re"}], "+", 
-       RowBox[{"Ra", " ", "Rd", " ", "Re"}], "+", 
-       RowBox[{"Rb", " ", "Rd", " ", "Re"}], "+", 
-       RowBox[{"Rc", " ", "Rd", " ", "Re"}], "+", 
-       RowBox[{"Ra", " ", "Rc", " ", "Rf"}], "+", 
-       RowBox[{"Rb", " ", "Rc", " ", "Rf"}], "+", 
-       RowBox[{"Ra", " ", "Rd", " ", "Rf"}], "+", 
-       RowBox[{"Rb", " ", "Rd", " ", "Rf"}], "+", 
-       RowBox[{"Rc", " ", "Rd", " ", "Rf"}], "+", 
-       RowBox[{"Ra", " ", "Re", " ", "Rf"}], "+", 
-       RowBox[{"Rb", " ", "Re", " ", "Rf"}], "+", 
-       RowBox[{"Rc", " ", "Re", " ", "Rf"}]}]], ",", 
-     FractionBox[
-      RowBox[{"2", " ", 
-       RowBox[{"(", 
-        RowBox[{
-         RowBox[{"Rb", " ", "Rd"}], "-", 
-         RowBox[{"Ra", " ", "Re"}]}], ")"}], " ", "Rf"}], 
-      RowBox[{
-       RowBox[{"Ra", " ", "Rb", " ", "Rc"}], "+", 
-       RowBox[{"Ra", " ", "Rb", " ", "Rd"}], "+", 
-       RowBox[{"Rb", " ", "Rc", " ", "Rd"}], "+", 
-       RowBox[{"Ra", " ", "Rb", " ", "Re"}], "+", 
-       RowBox[{"Ra", " ", "Rc", " ", "Re"}], "+", 
-       RowBox[{"Ra", " ", "Rd", " ", "Re"}], "+", 
-       RowBox[{"Rb", " ", "Rd", " ", "Re"}], "+", 
-       RowBox[{"Rc", " ", "Rd", " ", "Re"}], "+", 
-       RowBox[{"Ra", " ", "Rc", " ", "Rf"}], "+", 
-       RowBox[{"Rb", " ", "Rc", " ", "Rf"}], "+", 
-       RowBox[{"Ra", " ", "Rd", " ", "Rf"}], "+", 
-       RowBox[{"Rb", " ", "Rd", " ", "Rf"}], "+", 
-       RowBox[{"Rc", " ", "Rd", " ", "Rf"}], "+", 
-       RowBox[{"Ra", " ", "Re", " ", "Rf"}], "+", 
-       RowBox[{"Rb", " ", "Re", " ", "Rf"}], "+", 
-       RowBox[{"Rc", " ", "Re", " ", "Rf"}]}]], ",", 
-     FractionBox[
-      RowBox[{"2", " ", 
-       RowBox[{"(", 
-        RowBox[{
-         RowBox[{
-          RowBox[{"-", "Rb"}], " ", "Rc"}], "-", 
-         RowBox[{"Ra", " ", "Re"}], "-", 
-         RowBox[{"Rb", " ", "Re"}], "-", 
-         RowBox[{"Rc", " ", "Re"}]}], ")"}], " ", "Rf"}], 
-      RowBox[{
-       RowBox[{"Ra", " ", "Rb", " ", "Rc"}], "+", 
-       RowBox[{"Ra", " ", "Rb", " ", "Rd"}], "+", 
-       RowBox[{"Rb", " ", "Rc", " ", "Rd"}], "+", 
-       RowBox[{"Ra", " ", "Rb", " ", "Re"}], "+", 
-       RowBox[{"Ra", " ", "Rc", " ", "Re"}], "+", 
-       RowBox[{"Ra", " ", "Rd", " ", "Re"}], "+", 
-       RowBox[{"Rb", " ", "Rd", " ", "Re"}], "+", 
-       RowBox[{"Rc", " ", "Rd", " ", "Re"}], "+", 
-       RowBox[{"Ra", " ", "Rc", " ", "Rf"}], "+", 
-       RowBox[{"Rb", " ", "Rc", " ", "Rf"}], "+", 
-       RowBox[{"Ra", " ", "Rd", " ", "Rf"}], "+", 
-       RowBox[{"Rb", " ", "Rd", " ", "Rf"}], "+", 
-       RowBox[{"Rc", " ", "Rd", " ", "Rf"}], "+", 
-       RowBox[{"Ra", " ", "Re", " ", "Rf"}], "+", 
-       RowBox[{"Rb", " ", "Re", " ", "Rf"}], "+", 
-       RowBox[{"Rc", " ", "Re", " ", "Rf"}]}]], ",", 
-     FractionBox[
-      RowBox[{"2", " ", 
-       RowBox[{"(", 
-        RowBox[{
-         RowBox[{"Ra", " ", "Rc"}], "+", 
-         RowBox[{"Ra", " ", "Rd"}], "+", 
-         RowBox[{"Rb", " ", "Rd"}], "+", 
-         RowBox[{"Rc", " ", "Rd"}]}], ")"}], " ", "Rf"}], 
-      RowBox[{
-       RowBox[{"Ra", " ", "Rb", " ", "Rc"}], "+", 
-       RowBox[{"Ra", " ", "Rb", " ", "Rd"}], "+", 
-       RowBox[{"Rb", " ", "Rc", " ", "Rd"}], "+", 
-       RowBox[{"Ra", " ", "Rb", " ", "Re"}], "+", 
-       RowBox[{"Ra", " ", "Rc", " ", "Re"}], "+", 
-       RowBox[{"Ra", " ", "Rd", " ", "Re"}], "+", 
-       RowBox[{"Rb", " ", "Rd", " ", "Re"}], "+", 
-       RowBox[{"Rc", " ", "Rd", " ", "Re"}], "+", 
-       RowBox[{"Ra", " ", "Rc", " ", "Rf"}], "+", 
-       RowBox[{"Rb", " ", "Rc", " ", "Rf"}], "+", 
-       RowBox[{"Ra", " ", "Rd", " ", "Rf"}], "+", 
-       RowBox[{"Rb", " ", "Rd", " ", "Rf"}], "+", 
-       RowBox[{"Rc", " ", "Rd", " ", "Rf"}], "+", 
-       RowBox[{"Ra", " ", "Re", " ", "Rf"}], "+", 
-       RowBox[{"Rb", " ", "Re", " ", "Rf"}], "+", 
-       RowBox[{"Rc", " ", "Re", " ", "Rf"}]}]], ",", 
-     RowBox[{"1", "+", 
-      FractionBox[
-       RowBox[{"2", " ", 
-        RowBox[{"(", 
-         RowBox[{
-          RowBox[{
-           RowBox[{"-", "Ra"}], " ", "Rc"}], "-", 
-          RowBox[{"Rb", " ", "Rc"}], "-", 
-          RowBox[{"Ra", " ", "Rd"}], "-", 
-          RowBox[{"Rb", " ", "Rd"}], "-", 
-          RowBox[{"Rc", " ", "Rd"}], "-", 
-          RowBox[{"Ra", " ", "Re"}], "-", 
-          RowBox[{"Rb", " ", "Re"}], "-", 
-          RowBox[{"Rc", " ", "Re"}]}], ")"}], " ", "Rf"}], 
-       RowBox[{
-        RowBox[{"Ra", " ", "Rb", " ", "Rc"}], "+", 
-        RowBox[{"Ra", " ", "Rb", " ", "Rd"}], "+", 
-        RowBox[{"Rb", " ", "Rc", " ", "Rd"}], "+", 
-        RowBox[{"Ra", " ", "Rb", " ", "Re"}], "+", 
-        RowBox[{"Ra", " ", "Rc", " ", "Re"}], "+", 
-        RowBox[{"Ra", " ", "Rd", " ", "Re"}], "+", 
-        RowBox[{"Rb", " ", "Rd", " ", "Re"}], "+", 
-        RowBox[{"Rc", " ", "Rd", " ", "Re"}], "+", 
-        RowBox[{"Ra", " ", "Rc", " ", "Rf"}], "+", 
-        RowBox[{"Rb", " ", "Rc", " ", "Rf"}], "+", 
-        RowBox[{"Ra", " ", "Rd", " ", "Rf"}], "+", 
-        RowBox[{"Rb", " ", "Rd", " ", "Rf"}], "+", 
-        RowBox[{"Rc", " ", "Rd", " ", "Rf"}], "+", 
-        RowBox[{"Ra", " ", "Re", " ", "Rf"}], "+", 
-        RowBox[{"Rb", " ", "Re", " ", "Rf"}], "+", 
-        RowBox[{"Rc", " ", "Re", " ", "Rf"}]}]]}]}], "}"}]}], "}"}]], "Output",
- CellChangeTimes->{3.8198039284310417`*^9, 3.819804100126957*^9},
+Cell["\<\
+{{1 + (2*Ra*((-Rb)*Rc - Rb*Rd - Rb*Re - Rc*Re - Rd*Re - Rc*Rf - Rd*Rf - \
+Re*Rf))/(Ra*Rb*Rc + Ra*Rb*Rd + Rb*Rc*Rd + Ra*Rb*Re + Ra*Rc*Re + Ra*Rd*Re + \
+Rb*Rd*Re + Rc*Rd*Re + Ra*Rc*Rf + Rb*Rc*Rf + Ra*Rd*Rf + Rb*Rd*Rf + Rc*Rd*Rf + \
+Ra*Re*Rf + Rb*Re*Rf + Rc*Re*Rf), 
+   (2*Ra*(Rd*Re + Rc*Rf + Rd*Rf + Re*Rf))/(Ra*Rb*Rc + Ra*Rb*Rd + Rb*Rc*Rd + \
+Ra*Rb*Re + Ra*Rc*Re + Ra*Rd*Re + Rb*Rd*Re + Rc*Rd*Re + Ra*Rc*Rf + Rb*Rc*Rf + \
+Ra*Rd*Rf + Rb*Rd*Rf + Rc*Rd*Rf + Ra*Re*Rf + Rb*Re*Rf + Rc*Re*Rf), 
+   (2*Ra*(Rb*Rd + Rd*Re + Rd*Rf + Re*Rf))/(Ra*Rb*Rc + Ra*Rb*Rd + Rb*Rc*Rd + \
+Ra*Rb*Re + Ra*Rc*Re + Ra*Rd*Re + Rb*Rd*Re + Rc*Rd*Re + Ra*Rc*Rf + Rb*Rc*Rf + \
+Ra*Rd*Rf + Rb*Rd*Rf + Rc*Rd*Rf + Ra*Re*Rf + Rb*Re*Rf + Rc*Re*Rf), 
+   (2*Ra*((-Rb)*Rc - Rb*Re - Rc*Re - Rc*Rf))/(Ra*Rb*Rc + Ra*Rb*Rd + Rb*Rc*Rd \
++ Ra*Rb*Re + Ra*Rc*Re + Ra*Rd*Re + Rb*Rd*Re + Rc*Rd*Re + Ra*Rc*Rf + Rb*Rc*Rf \
++ Ra*Rd*Rf + Rb*Rd*Rf + Rc*Rd*Rf + Ra*Re*Rf + Rb*Re*Rf + Rc*Re*Rf), 
+   (2*Ra*(Rb*Rd - Rc*Rf))/(Ra*Rb*Rc + Ra*Rb*Rd + Rb*Rc*Rd + Ra*Rb*Re + \
+Ra*Rc*Re + Ra*Rd*Re + Rb*Rd*Re + Rc*Rd*Re + Ra*Rc*Rf + Rb*Rc*Rf + Ra*Rd*Rf + \
+Rb*Rd*Rf + Rc*Rd*Rf + Ra*Re*Rf + Rb*Re*Rf + Rc*Re*Rf), 
+   (2*Ra*((-Rb)*Rc - Rb*Rd - Rb*Re - Rc*Re))/(Ra*Rb*Rc + Ra*Rb*Rd + Rb*Rc*Rd \
++ Ra*Rb*Re + Ra*Rc*Re + Ra*Rd*Re + Rb*Rd*Re + Rc*Rd*Re + Ra*Rc*Rf + Rb*Rc*Rf \
++ Ra*Rd*Rf + Rb*Rd*Rf + Rc*Rd*Rf + Ra*Re*Rf + Rb*Re*Rf + Rc*Re*Rf)}, 
+  {(2*Rb*(Rd*Re + Rc*Rf + Rd*Rf + Re*Rf))/(Ra*Rb*Rc + Ra*Rb*Rd + Rb*Rc*Rd + \
+Ra*Rb*Re + Ra*Rc*Re + Ra*Rd*Re + Rb*Rd*Re + Rc*Rd*Re + Ra*Rc*Rf + Rb*Rc*Rf + \
+Ra*Rd*Rf + Rb*Rd*Rf + Rc*Rd*Rf + Ra*Re*Rf + Rb*Re*Rf + Rc*Re*Rf), 
+   1 + (2*Rb*((-Ra)*Rc - Ra*Rd - Rc*Rd - Ra*Re - Rd*Re - Rc*Rf - Rd*Rf - \
+Re*Rf))/(Ra*Rb*Rc + Ra*Rb*Rd + Rb*Rc*Rd + Ra*Rb*Re + Ra*Rc*Re + Ra*Rd*Re + \
+Rb*Rd*Re + Rc*Rd*Re + Ra*Rc*Rf + Rb*Rc*Rf + Ra*Rd*Rf + Rb*Rd*Rf + Rc*Rd*Rf + \
+Ra*Re*Rf + Rb*Re*Rf + 
+      Rc*Re*Rf), (2*Rb*((-Ra)*Re - Rd*Re - Rd*Rf - Re*Rf))/(Ra*Rb*Rc + \
+Ra*Rb*Rd + Rb*Rc*Rd + Ra*Rb*Re + Ra*Rc*Re + Ra*Rd*Re + Rb*Rd*Re + Rc*Rd*Re + \
+Ra*Rc*Rf + Rb*Rc*Rf + Ra*Rd*Rf + Rb*Rd*Rf + Rc*Rd*Rf + Ra*Re*Rf + Rb*Re*Rf + \
+Rc*Re*Rf), 
+   (2*Rb*((-Ra)*Re + Rc*Rf))/(Ra*Rb*Rc + Ra*Rb*Rd + Rb*Rc*Rd + Ra*Rb*Re + \
+Ra*Rc*Re + Ra*Rd*Re + Rb*Rd*Re + Rc*Rd*Re + Ra*Rc*Rf + Rb*Rc*Rf + Ra*Rd*Rf + \
+Rb*Rd*Rf + Rc*Rd*Rf + Ra*Re*Rf + Rb*Re*Rf + Rc*Re*Rf), 
+   (2*Rb*(Ra*Rc + Ra*Rd + Rc*Rd + Rc*Rf))/(Ra*Rb*Rc + Ra*Rb*Rd + Rb*Rc*Rd + \
+Ra*Rb*Re + Ra*Rc*Re + Ra*Rd*Re + Rb*Rd*Re + Rc*Rd*Re + Ra*Rc*Rf + Rb*Rc*Rf + \
+Ra*Rd*Rf + Rb*Rd*Rf + Rc*Rd*Rf + Ra*Re*Rf + Rb*Re*Rf + Rc*Re*Rf), 
+   (2*Rb*((-Ra)*Rc - Ra*Rd - Rc*Rd - Ra*Re))/(Ra*Rb*Rc + Ra*Rb*Rd + Rb*Rc*Rd \
++ Ra*Rb*Re + Ra*Rc*Re + Ra*Rd*Re + Rb*Rd*Re + Rc*Rd*Re + Ra*Rc*Rf + Rb*Rc*Rf \
++ Ra*Rd*Rf + Rb*Rd*Rf + Rc*Rd*Rf + Ra*Re*Rf + Rb*Re*Rf + Rc*Re*Rf)}, 
+  {(2*Rc*(Rb*Rd + Rd*Re + Rd*Rf + Re*Rf))/(Ra*Rb*Rc + Ra*Rb*Rd + Rb*Rc*Rd + \
+Ra*Rb*Re + Ra*Rc*Re + Ra*Rd*Re + Rb*Rd*Re + Rc*Rd*Re + Ra*Rc*Rf + Rb*Rc*Rf + \
+Ra*Rd*Rf + Rb*Rd*Rf + Rc*Rd*Rf + Ra*Re*Rf + Rb*Re*Rf + Rc*Re*Rf), 
+   (2*Rc*((-Ra)*Re - Rd*Re - Rd*Rf - Re*Rf))/(Ra*Rb*Rc + Ra*Rb*Rd + Rb*Rc*Rd \
++ Ra*Rb*Re + Ra*Rc*Re + Ra*Rd*Re + Rb*Rd*Re + Rc*Rd*Re + Ra*Rc*Rf + Rb*Rc*Rf \
++ Ra*Rd*Rf + Rb*Rd*Rf + Rc*Rd*Rf + Ra*Re*Rf + Rb*Re*Rf + Rc*Re*Rf), 
+   1 + (2*Rc*((-Ra)*Rb - Rb*Rd - Ra*Re - Rd*Re - Ra*Rf - Rb*Rf - Rd*Rf - \
+Re*Rf))/(Ra*Rb*Rc + Ra*Rb*Rd + Rb*Rc*Rd + Ra*Rb*Re + Ra*Rc*Re + Ra*Rd*Re + \
+Rb*Rd*Re + Rc*Rd*Re + Ra*Rc*Rf + Rb*Rc*Rf + Ra*Rd*Rf + Rb*Rd*Rf + Rc*Rd*Rf + \
+Ra*Re*Rf + Rb*Re*Rf + 
+      Rc*Re*Rf), (2*Rc*((-Ra)*Rb - Ra*Re - Ra*Rf - Rb*Rf))/(Ra*Rb*Rc + \
+Ra*Rb*Rd + Rb*Rc*Rd + Ra*Rb*Re + Ra*Rc*Re + Ra*Rd*Re + Rb*Rd*Re + Rc*Rd*Re + \
+Ra*Rc*Rf + Rb*Rc*Rf + Ra*Rd*Rf + Rb*Rd*Rf + Rc*Rd*Rf + Ra*Re*Rf + Rb*Re*Rf + \
+Rc*Re*Rf), 
+   (2*Rc*((-Ra)*Rb - Rb*Rd - Ra*Rf - Rb*Rf))/(Ra*Rb*Rc + Ra*Rb*Rd + Rb*Rc*Rd \
++ Ra*Rb*Re + Ra*Rc*Re + Ra*Rd*Re + Rb*Rd*Re + Rc*Rd*Re + Ra*Rc*Rf + Rb*Rc*Rf \
++ Ra*Rd*Rf + Rb*Rd*Rf + Rc*Rd*Rf + Ra*Re*Rf + Rb*Re*Rf + Rc*Re*Rf), 
+   (2*Rc*(Rb*Rd - Ra*Re))/(Ra*Rb*Rc + Ra*Rb*Rd + Rb*Rc*Rd + Ra*Rb*Re + \
+Ra*Rc*Re + Ra*Rd*Re + Rb*Rd*Re + Rc*Rd*Re + Ra*Rc*Rf + Rb*Rc*Rf + Ra*Rd*Rf + \
+Rb*Rd*Rf + Rc*Rd*Rf + Ra*Re*Rf + Rb*Re*Rf + Rc*Re*Rf)}, 
+  {(2*Rd*((-Rb)*Rc - Rb*Re - Rc*Re - Rc*Rf))/(Ra*Rb*Rc + Ra*Rb*Rd + Rb*Rc*Rd \
++ Ra*Rb*Re + Ra*Rc*Re + Ra*Rd*Re + Rb*Rd*Re + Rc*Rd*Re + Ra*Rc*Rf + Rb*Rc*Rf \
++ Ra*Rd*Rf + Rb*Rd*Rf + Rc*Rd*Rf + Ra*Re*Rf + Rb*Re*Rf + Rc*Re*Rf), 
+   (2*Rd*((-Ra)*Re + Rc*Rf))/(Ra*Rb*Rc + Ra*Rb*Rd + Rb*Rc*Rd + Ra*Rb*Re + \
+Ra*Rc*Re + Ra*Rd*Re + Rb*Rd*Re + Rc*Rd*Re + Ra*Rc*Rf + Rb*Rc*Rf + Ra*Rd*Rf + \
+Rb*Rd*Rf + Rc*Rd*Rf + Ra*Re*Rf + Rb*Re*Rf + Rc*Re*Rf), 
+   (2*Rd*((-Ra)*Rb - Ra*Re - Ra*Rf - Rb*Rf))/(Ra*Rb*Rc + Ra*Rb*Rd + Rb*Rc*Rd \
++ Ra*Rb*Re + Ra*Rc*Re + Ra*Rd*Re + Rb*Rd*Re + Rc*Rd*Re + Ra*Rc*Rf + Rb*Rc*Rf \
++ Ra*Rd*Rf + Rb*Rd*Rf + Rc*Rd*Rf + Ra*Re*Rf + Rb*Re*Rf + Rc*Re*Rf), 
+   1 + (2*Rd*((-Ra)*Rb - Rb*Rc - Ra*Re - Rb*Re - Rc*Re - Ra*Rf - Rb*Rf - \
+Rc*Rf))/(Ra*Rb*Rc + Ra*Rb*Rd + Rb*Rc*Rd + Ra*Rb*Re + Ra*Rc*Re + Ra*Rd*Re + \
+Rb*Rd*Re + Rc*Rd*Re + Ra*Rc*Rf + Rb*Rc*Rf + Ra*Rd*Rf + Rb*Rd*Rf + Rc*Rd*Rf + \
+Ra*Re*Rf + Rb*Re*Rf + 
+      Rc*Re*Rf), (2*Rd*((-Ra)*Rb - Ra*Rf - Rb*Rf - Rc*Rf))/(Ra*Rb*Rc + \
+Ra*Rb*Rd + Rb*Rc*Rd + Ra*Rb*Re + Ra*Rc*Re + Ra*Rd*Re + Rb*Rd*Re + Rc*Rd*Re + \
+Ra*Rc*Rf + Rb*Rc*Rf + Ra*Rd*Rf + Rb*Rd*Rf + Rc*Rd*Rf + Ra*Re*Rf + Rb*Re*Rf + \
+Rc*Re*Rf), 
+   (2*Rd*((-Rb)*Rc - Ra*Re - Rb*Re - Rc*Re))/(Ra*Rb*Rc + Ra*Rb*Rd + Rb*Rc*Rd \
++ Ra*Rb*Re + Ra*Rc*Re + Ra*Rd*Re + Rb*Rd*Re + Rc*Rd*Re + Ra*Rc*Rf + Rb*Rc*Rf \
++ Ra*Rd*Rf + Rb*Rd*Rf + Rc*Rd*Rf + Ra*Re*Rf + Rb*Re*Rf + Rc*Re*Rf)}, 
+  {(2*Re*(Rb*Rd - Rc*Rf))/(Ra*Rb*Rc + Ra*Rb*Rd + Rb*Rc*Rd + Ra*Rb*Re + \
+Ra*Rc*Re + Ra*Rd*Re + Rb*Rd*Re + Rc*Rd*Re + Ra*Rc*Rf + Rb*Rc*Rf + Ra*Rd*Rf + \
+Rb*Rd*Rf + Rc*Rd*Rf + Ra*Re*Rf + Rb*Re*Rf + Rc*Re*Rf), 
+   (2*Re*(Ra*Rc + Ra*Rd + Rc*Rd + Rc*Rf))/(Ra*Rb*Rc + Ra*Rb*Rd + Rb*Rc*Rd + \
+Ra*Rb*Re + Ra*Rc*Re + Ra*Rd*Re + Rb*Rd*Re + Rc*Rd*Re + Ra*Rc*Rf + Rb*Rc*Rf + \
+Ra*Rd*Rf + Rb*Rd*Rf + Rc*Rd*Rf + Ra*Re*Rf + Rb*Re*Rf + Rc*Re*Rf), 
+   (2*Re*((-Ra)*Rb - Rb*Rd - Ra*Rf - Rb*Rf))/(Ra*Rb*Rc + Ra*Rb*Rd + Rb*Rc*Rd \
++ Ra*Rb*Re + Ra*Rc*Re + Ra*Rd*Re + Rb*Rd*Re + Rc*Rd*Re + Ra*Rc*Rf + Rb*Rc*Rf \
++ Ra*Rd*Rf + Rb*Rd*Rf + Rc*Rd*Rf + Ra*Re*Rf + Rb*Re*Rf + Rc*Re*Rf), 
+   (2*Re*((-Ra)*Rb - Ra*Rf - Rb*Rf - Rc*Rf))/(Ra*Rb*Rc + Ra*Rb*Rd + Rb*Rc*Rd \
++ Ra*Rb*Re + Ra*Rc*Re + Ra*Rd*Re + Rb*Rd*Re + Rc*Rd*Re + Ra*Rc*Rf + Rb*Rc*Rf \
++ Ra*Rd*Rf + Rb*Rd*Rf + Rc*Rd*Rf + Ra*Re*Rf + Rb*Re*Rf + Rc*Re*Rf), 
+   1 + (2*Re*((-Ra)*Rb - Ra*Rc - Ra*Rd - Rb*Rd - Rc*Rd - Ra*Rf - Rb*Rf - \
+Rc*Rf))/(Ra*Rb*Rc + Ra*Rb*Rd + Rb*Rc*Rd + Ra*Rb*Re + Ra*Rc*Re + Ra*Rd*Re + \
+Rb*Rd*Re + Rc*Rd*Re + Ra*Rc*Rf + Rb*Rc*Rf + Ra*Rd*Rf + Rb*Rd*Rf + Rc*Rd*Rf + \
+Ra*Re*Rf + Rb*Re*Rf + 
+      Rc*Re*Rf), (2*(Ra*Rc + Ra*Rd + Rb*Rd + Rc*Rd)*Re)/(Ra*Rb*Rc + Ra*Rb*Rd \
++ Rb*Rc*Rd + Ra*Rb*Re + Ra*Rc*Re + Ra*Rd*Re + Rb*Rd*Re + Rc*Rd*Re + Ra*Rc*Rf \
++ Rb*Rc*Rf + Ra*Rd*Rf + Rb*Rd*Rf + Rc*Rd*Rf + Ra*Re*Rf + Rb*Re*Rf + \
+Rc*Re*Rf)}, 
+  {(2*((-Rb)*Rc - Rb*Rd - Rb*Re - Rc*Re)*Rf)/(Ra*Rb*Rc + Ra*Rb*Rd + Rb*Rc*Rd \
++ Ra*Rb*Re + Ra*Rc*Re + Ra*Rd*Re + Rb*Rd*Re + Rc*Rd*Re + Ra*Rc*Rf + Rb*Rc*Rf \
++ Ra*Rd*Rf + Rb*Rd*Rf + Rc*Rd*Rf + Ra*Re*Rf + Rb*Re*Rf + Rc*Re*Rf), 
+   (2*((-Ra)*Rc - Ra*Rd - Rc*Rd - Ra*Re)*Rf)/(Ra*Rb*Rc + Ra*Rb*Rd + Rb*Rc*Rd \
++ Ra*Rb*Re + Ra*Rc*Re + Ra*Rd*Re + Rb*Rd*Re + Rc*Rd*Re + Ra*Rc*Rf + Rb*Rc*Rf \
++ Ra*Rd*Rf + Rb*Rd*Rf + Rc*Rd*Rf + Ra*Re*Rf + Rb*Re*Rf + Rc*Re*Rf), 
+   (2*(Rb*Rd - Ra*Re)*Rf)/(Ra*Rb*Rc + Ra*Rb*Rd + Rb*Rc*Rd + Ra*Rb*Re + \
+Ra*Rc*Re + Ra*Rd*Re + Rb*Rd*Re + Rc*Rd*Re + Ra*Rc*Rf + Rb*Rc*Rf + Ra*Rd*Rf + \
+Rb*Rd*Rf + Rc*Rd*Rf + Ra*Re*Rf + Rb*Re*Rf + Rc*Re*Rf), 
+   (2*((-Rb)*Rc - Ra*Re - Rb*Re - Rc*Re)*Rf)/(Ra*Rb*Rc + Ra*Rb*Rd + Rb*Rc*Rd \
++ Ra*Rb*Re + Ra*Rc*Re + Ra*Rd*Re + Rb*Rd*Re + Rc*Rd*Re + Ra*Rc*Rf + Rb*Rc*Rf \
++ Ra*Rd*Rf + Rb*Rd*Rf + Rc*Rd*Rf + Ra*Re*Rf + Rb*Re*Rf + Rc*Re*Rf), 
+   (2*(Ra*Rc + Ra*Rd + Rb*Rd + Rc*Rd)*Rf)/(Ra*Rb*Rc + Ra*Rb*Rd + Rb*Rc*Rd + \
+Ra*Rb*Re + Ra*Rc*Re + Ra*Rd*Re + Rb*Rd*Re + Rc*Rd*Re + Ra*Rc*Rf + Rb*Rc*Rf + \
+Ra*Rd*Rf + Rb*Rd*Rf + Rc*Rd*Rf + Ra*Re*Rf + Rb*Re*Rf + Rc*Re*Rf), 
+   1 + (2*((-Ra)*Rc - Rb*Rc - Ra*Rd - Rb*Rd - Rc*Rd - Ra*Re - Rb*Re - \
+Rc*Re)*Rf)/(Ra*Rb*Rc + Ra*Rb*Rd + Rb*Rc*Rd + Ra*Rb*Re + Ra*Rc*Re + Ra*Rd*Re + \
+Rb*Rd*Re + Rc*Rd*Re + Ra*Rc*Rf + Rb*Rc*Rf + Ra*Rd*Rf + Rb*Rd*Rf + Rc*Rd*Rf + \
+Ra*Re*Rf + Rb*Re*Rf + 
+      Rc*Re*Rf)}}\
+\>", "Output",
+ CellChangeTimes->{3.8198039284310417`*^9, 3.819804100126957*^9, 
+  3.8198087725206394`*^9},
  CellLabel->"Out[31]=",ExpressionUUID->"518ffad6-c0ec-489c-a994-92c1aadba502"]
 }, Open  ]],
 
@@ -1740,42 +900,41 @@ CellTagsIndex->{}
 *)
 (*NotebookFileOutline
 Notebook[{
-Cell[558, 20, 159, 3, 28, "Input",ExpressionUUID->"24fa18b3-6db1-43d4-b770-68a6f90c8360"],
 Cell[CellGroupData[{
-Cell[742, 27, 5998, 161, 86, "Input",ExpressionUUID->"1bb75548-d5cf-484c-8051-48b5aacd057a"],
-Cell[6743, 190, 4123, 101, 115, "Output",ExpressionUUID->"18faee09-b83c-4b6b-8995-d1eb517488a9"]
+Cell[580, 22, 5998, 161, 86, "Input",ExpressionUUID->"1bb75548-d5cf-484c-8051-48b5aacd057a"],
+Cell[6581, 185, 4123, 101, 115, "Output",ExpressionUUID->"18faee09-b83c-4b6b-8995-d1eb517488a9"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[10903, 296, 206, 4, 28, "Input",ExpressionUUID->"2e733aa9-6802-498f-8fdb-769a9f1f73ea"],
-Cell[11112, 302, 2899, 77, 364, "Output",ExpressionUUID->"3c545bea-2b84-4f99-87b0-fa6c3e3a06e8"]
+Cell[10741, 291, 206, 4, 28, "Input",ExpressionUUID->"2e733aa9-6802-498f-8fdb-769a9f1f73ea"],
+Cell[10950, 297, 2899, 77, 411, "Output",ExpressionUUID->"3c545bea-2b84-4f99-87b0-fa6c3e3a06e8"]
 }, Open  ]],
-Cell[14026, 382, 333, 5, 28, "Input",ExpressionUUID->"108d6c07-8678-4507-8b0c-8fc6ca0efb50"],
+Cell[13864, 377, 333, 5, 28, "Input",ExpressionUUID->"108d6c07-8678-4507-8b0c-8fc6ca0efb50"],
 Cell[CellGroupData[{
-Cell[14384, 391, 1826, 50, 48, InheritFromParent,ExpressionUUID->"4a312352-cc07-4f8c-bd92-afd7e2a708a8"],
-Cell[16213, 443, 1743, 49, 52, "Output",ExpressionUUID->"e38f0fbd-464e-49c6-be35-7ab439fe00b8"]
-}, Open  ]],
-Cell[CellGroupData[{
-Cell[17993, 497, 167, 3, 28, "Input",ExpressionUUID->"acfa3c52-476c-46ad-b02d-854aff7c4cff"],
-Cell[18163, 502, 1166, 32, 283, "Output",ExpressionUUID->"a40c4d5f-b0c0-45de-afa9-887aa36418df"]
+Cell[14222, 386, 1826, 50, 48, InheritFromParent,ExpressionUUID->"4a312352-cc07-4f8c-bd92-afd7e2a708a8"],
+Cell[16051, 438, 1743, 49, 52, "Output",ExpressionUUID->"e38f0fbd-464e-49c6-be35-7ab439fe00b8"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[19366, 539, 378, 8, 28, "Input",ExpressionUUID->"29c5fad0-3c97-4f59-a41f-0ef73aa7270b"],
-Cell[19747, 549, 799, 22, 32, "Output",ExpressionUUID->"8cd41533-43c5-4ab2-bf1b-ccb9803085b9"]
+Cell[17831, 492, 167, 3, 28, "Input",ExpressionUUID->"acfa3c52-476c-46ad-b02d-854aff7c4cff"],
+Cell[18001, 497, 1166, 32, 283, "Output",ExpressionUUID->"a40c4d5f-b0c0-45de-afa9-887aa36418df"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[20583, 576, 210, 3, 28, "Input",ExpressionUUID->"8f6b018b-7ebf-49c4-92c9-af2b6bc8bd06"],
-Cell[20796, 581, 816, 23, 130, "Output",ExpressionUUID->"0601ed25-4d2e-4f7e-87a4-a314b6c913be"]
-}, Open  ]],
-Cell[21627, 607, 154, 3, 28, "Input",ExpressionUUID->"83e79f65-fc5b-41e9-b2b2-53d58b6d18ec"],
-Cell[CellGroupData[{
-Cell[21806, 614, 793, 17, 28, "Input",ExpressionUUID->"4aa8e8e3-16b7-4fec-884c-606edb488147"],
-Cell[22602, 633, 41496, 958, 1416, "Output",ExpressionUUID->"518ffad6-c0ec-489c-a994-92c1aadba502"]
+Cell[19204, 534, 378, 8, 28, "Input",ExpressionUUID->"29c5fad0-3c97-4f59-a41f-0ef73aa7270b"],
+Cell[19585, 544, 799, 22, 32, "Output",ExpressionUUID->"8cd41533-43c5-4ab2-bf1b-ccb9803085b9"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[64135, 1596, 241, 4, 28, "Input",ExpressionUUID->"9883f396-c8a8-48a6-84ec-9bc3a2798c7d"],
-Cell[64379, 1602, 7030, 115, 592, "Output",ExpressionUUID->"80d20ca3-5596-4038-ab37-1311c51cc425"]
+Cell[20421, 571, 210, 3, 28, "Input",ExpressionUUID->"8f6b018b-7ebf-49c4-92c9-af2b6bc8bd06"],
+Cell[20634, 576, 816, 23, 177, "Output",ExpressionUUID->"0601ed25-4d2e-4f7e-87a4-a314b6c913be"]
 }, Open  ]],
-Cell[71424, 1720, 181, 3, 28, "Input",ExpressionUUID->"797ffef9-e8ca-4ec1-bbbe-3a20abf3665e"]
+Cell[21465, 602, 154, 3, 28, "Input",ExpressionUUID->"83e79f65-fc5b-41e9-b2b2-53d58b6d18ec"],
+Cell[CellGroupData[{
+Cell[21644, 609, 793, 17, 28, "Input",ExpressionUUID->"4aa8e8e3-16b7-4fec-884c-606edb488147"],
+Cell[22440, 628, 8496, 123, 608, "Output",ExpressionUUID->"518ffad6-c0ec-489c-a994-92c1aadba502"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[30973, 756, 241, 4, 28, "Input",ExpressionUUID->"9883f396-c8a8-48a6-84ec-9bc3a2798c7d"],
+Cell[31217, 762, 7030, 115, 592, "Output",ExpressionUUID->"80d20ca3-5596-4038-ab37-1311c51cc425"]
+}, Open  ]],
+Cell[38262, 880, 181, 3, 28, "Input",ExpressionUUID->"797ffef9-e8ca-4ec1-bbbe-3a20abf3665e"]
 }
 ]
 *)
