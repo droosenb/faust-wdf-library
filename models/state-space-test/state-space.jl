@@ -1,5 +1,4 @@
 using Latexify;
-using LaTeXStrings;
 using LinearAlgebra;
 using SparseArrays;
 using ModelingToolkit;
@@ -60,6 +59,20 @@ pretty_expr(f::Function, args; kw...) = Expr(:call, nameof(f), pretty_expr.(args
 pretty_expr(A::Array{Num, 2}; kw...) = pretty_array(A; kw...)
 
 
+function julia2mathmaticaArray(mtx::Array)
+    println("")
+    str::String = "{ "
+    for i = 1:size(mtx)[1]
+        str *= "{ $(mtx[i, 1])"
+        for j = 2:size(mtx)[2]
+            str *= ", $(mtx[i, j])"
+        end
+        str *= " }, "
+    end
+    str *= " }"
+    println("")
+    return str
+end
 
 #returns respective matrix partition
 function d(U)
@@ -124,160 +137,198 @@ S_parallel(R_1, R_2, rho) = [0                                 R_2^(rho)/(R_1+R_
 # connection tree Vs : S1 : (R1, C1)
 
 # Declare names for easy substitution
-@variables Vs S1 R1 C1;
-
-# component values
-@parameters V_in R_R1 R_C1;
 # state-space matricies
 @parameters Q U P A B C;
 
-#initialize scattering mtx for S
-S1 = simplifyArray(S_series(R_C1, R_R1, 1))
-#println(latexify(pretty_expr(S1)))
-R1 = 0;
-C1 = 1;
+@variables Vs S1[0:2,0:2] P1[0:2, 0:2] S2[0:2, 0:2] R1 C1 R2 C2 V_in x y;
+@parameters n;
 
-println(latexify(pretty_expr(S1)))
-println(latexify(pretty_expr(simplifyArray(d(S1,0)))))
-println(latexify(pretty_expr(simplifyArray(u(S1,0)))))
+@variables R_R1 R_R2 R_C1 R_C2;
+
+S1 = S_series(R_R1, 1/(1/(R_R2+R_C2)+ 1/(R_C1)), 1)
+P1 = S_parallel(R_C1, R_R2+R_C2,  1)
+S2 = S_series(R_R2, R_C2, 1)
+
+Vs = -1
+
+R1 = 0
+R2 = 0
+C1 = 1
+C2 = 1
+
+Pa = u(S2, 0)*[R2  0; 0 C2]
+Pb = u(P1, 2)*[C1    zeros(1, 2);
+                zeros(3 ,1)      Pa]
+Pc = u(S1, 4)*[R1    zeros(1, 3);
+        zeros(5, 1)      Pb]
+P = simplifyArray(Pc)
 
 println("Array P")
-#declare P (up-going waves)
-P = u(S1, 0)*[C1 0; 0 R1]
-P = simplifyArray(P)
-println(latexify(pretty_expr(P)))
 
+println(latexify(P))
 
+U = [Vs             zeros(1, 6)
+    zeros(6, 1)    Diagonal(ones(6))]
+
+Qa = [R2  0; 0 C2]*d(S2, 0)
+Qb = [  C1    zeros(1, 3);
+        zeros(2 ,1)      Qa]*d(P1, 2)
+Qc = [  R1    zeros(1, 5);
+        zeros(3 ,1)      Qb]*d(S1, 4)
+Q = simplifyArray(Qc)
 
 println("Array Q")
-Q = [C1 0; 0 R1]*d(S1, 0)
-Q = simplifyArray(Q)
 println(latexify(pretty_expr(Q)))
 
-Vs = -1;
 
-U = [Vs             zeros(1, 2)
-     zeros(2, 1)    Diagonal(ones(2))]
-
-#initialize model shape
-A = simplifyArray(Q*U*P)
-println(latexify(pretty_expr(A)))
-
-Vs = 2;
-
-U_ins = [Vs             zeros(1, 2)
-         zeros(2, 1)    Diagonal(zeros(2))]
-
-B = simplifyArray(Q*U_ins)
-println(latexify(pretty_expr(B)))
-
-#swap Rs and Cs and repeat to confirm struture
-#declare P (up-going waves)
-
-S1 = simplifyArray(S_series(R_R1, R_C1, 1))
-
-P = u(S1, 0)*[R1 0; 0 C1]
-println("Array P")
-P = simplifyArray(P)
-println(latexify(pretty_expr(P)))
+    #
+    # println(latexify(pretty_expr(P)))
+    #  Q = [[R1 0; 0 C1]*d(Pb)     zeros(2, 3);
+    #       zeros(2, 3)             [R2 0; 0 C2]*d(Sb)]*R_down([3,3])*d(St, 4)
+    #
+    #  Q = simplifyArray(Q)
+    #
+    #  #A
+    #  A = simplifyArray(Q*U*P)
+    #
+    #  Vs = 2;
+    #  U_ins = [Vs  zeros(1, 6)
+    #          zeros(6, 1)                     zeros(6, 6)]
+    #  #B
+    #  B = simplifyArray(Q*U_ins)
+    #
+    #
+    #  println(latexify(pretty_expr(A)))
+    #  println(latexify(pretty_expr(B)))
 
 
-Q =[R1 0; 0 C1]*d(S1, 0)
-println("Array Q")
-Q = simplifyArray(Q)
-println(latexify(pretty_expr(Q)))
-
-Vs = -1;
-
-
-U = [Vs             zeros(1, 2)
-     zeros(2, 1)    Diagonal(ones(2))]
-
-#initialize model shape
-A = simplifyArray(Q*U*P)
-println(latexify(pretty_expr(A)))
-
-Vs = 2;
-
-U_ins = [Vs             zeros(1, 2)
-         zeros(2, 1)    Diagonal(zeros(2))]
-
-B = simplifyArray(Q*U_ins)
-println(latexify(pretty_expr(B)))
+# #initialize scattering mtx for S
+# S1 = simplifyArray(S_series(R_C1, R_R1, 1))
+# #println(latexify(pretty_expr(S1)))
+# R1 = 0;
+# C1 = 1;
+#
+# println(latexify(pretty_expr(S1)))
+# println(latexify(pretty_expr(simplifyArray(d(S1,0)))))
+# println(latexify(pretty_expr(simplifyArray(u(S1,0)))))
+#
+# println("Array P")
+# #declare P (up-going waves)
+# P = u(S1, 0)*[C1 0; 0 R1]
+# P = simplifyArray(P)
+# println(latexify(pretty_expr(P)))
+#
+#
+#
+# println("Array Q")
+# Q = [C1 0; 0 R1]*d(S1, 0)
+# Q = simplifyArray(Q)
+# println(latexify(pretty_expr(Q)))
+#
+# Vs = -1;
+#
+# U = [Vs             zeros(1, 2)
+#      zeros(2, 1)    Diagonal(ones(2))]
+#
+# #initialize model shape
+# A = simplifyArray(Q*U*P)
+# println(latexify(pretty_expr(A)))
+#
+# Vs = 2;
+#
+# U_ins = [Vs             zeros(1, 2)
+#          zeros(2, 1)    Diagonal(zeros(2))]
+#
+# B = simplifyArray(Q*U_ins)
+# println(latexify(pretty_expr(B)))
+#
+# #swap Rs and Cs and repeat to confirm struture
+# #declare P (up-going waves)
+#
+# S1 = simplifyArray(S_series(R_R1, R_C1, 1))
+#
+# P = u(S1, 0)*[R1 0; 0 C1]
+# println("Array P")
+# P = simplifyArray(P)
+# println(latexify(pretty_expr(P)))
+#
+#
+# Q =[R1 0; 0 C1]*d(S1, 0)
+# println("Array Q")
+# Q = simplifyArray(Q)
+# println(latexify(pretty_expr(Q)))
+#
+# Vs = -1;
+#
+#
+# U = [Vs             zeros(1, 2)
+#      zeros(2, 1)    Diagonal(ones(2))]
+#
+# #initialize model shape
+# A = simplifyArray(Q*U*P)
+# println(latexify(pretty_expr(A)))
+#
+# Vs = 2;
+#
+# U_ins = [Vs             zeros(1, 2)
+#          zeros(2, 1)    Diagonal(zeros(2))]
+#
+# B = simplifyArray(Q*U_ins)
+# println(latexify(pretty_expr(B)))
 
 
 
 # simple model test, see p. 77
 # connection tree Vs : St : ((Pb : (R1, C1)), (Sb : (R2, C2)))
-# too complex, need to go even simpler.
-@variables Vs St[0:2,0:2] Pb[0:2, 0:2] Sb[0:2, 0:2] R1 C1 R2 C2 V_in x y;
-@parameters n;
-
-@variables R_R1 R_R2 R_C1 R_C2;
-
-Sb = S_series(R_R2, R_C2, 1)
-Pb = S_parallel( R_R1,  R_C1,  1)
-St = S_series(1/(1/R_R1+1/R_C1),  R_R2 + R_C2, 1)
-
-Vs = -1;
-
-R1 = 0;
-R2 = 0;
-C1 = 1;
-C2 = 1;
 
 
-P = u(St, 4)*R_up([3,3])*[  u(Pb, 0)*[R1 0; 0 C1]         zeros(3, 2);
-                            zeros(3, 2 )     u(Sb, 0)*[R2  0; 0 C2]]
-P = simplifyArray(P)
-
-U = [Vs             zeros(1, 6)
-     zeros(6, 1)    Diagonal(ones(6))]
-
-
-Q = [[R1 0; 0 C1]*d(Pb)     zeros(2, 3);
-     zeros(2, 3)             [R2 0; 0 C2]*d(Sb)]*R_down([3,3])*d(St, 4)
-
-Q = simplifyArray(Q)
-
-#A
-A = simplifyArray(Q*U*P)
-
-Vs = 2;
-U_ins = [Vs  zeros(1, 6)
-        zeros(6, 1)                     zeros(6, 6)]
-#B
-B = simplifyArray(Q*U_ins)
+# U = [Vs             zeros(1, 6)
+#      zeros(6, 1)    Diagonal(ones(6))]
+#
+#
+# Q = [[R1 0; 0 C1]*d(Pb)     zeros(2, 3);
+#      zeros(2, 3)             [R2 0; 0 C2]*d(Sb)]*R_down([3,3])*d(St, 4)
+#
+# Q = simplifyArray(Q)
+#
+# #A
+# A = simplifyArray(Q*U*P)
+#
+# Vs = 2;
+# U_ins = [Vs  zeros(1, 6)
+#         zeros(6, 1)                     zeros(6, 6)]
+# #B
+# B = simplifyArray(Q*U_ins)
 
 
-println(latexify(pretty_expr(A)))
-println(latexify(pretty_expr(B)))
+# println(latexify(pretty_expr(A)))
+# println(latexify(pretty_expr(B)))
 
 
-P = u(St, 4)*R_up([3,3])*[ u(Sb, 0)*[C2 0; 0 R2]           zeros(3, 2);
-                            zeros(3, 2 )    u(Pb, 0)*[C1 0; 0 R1]]
-P = simplifyArray(P)
+# P = u(St, 4)*R_up([3,3])*[ u(Sb, 0)*[C2 0; 0 R2]           zeros(3, 2);
+#                             zeros(3, 2 )    u(Pb, 0)*[C1 0; 0 R1]]
+# P = simplifyArray(P)
+#
+# Vs = -1;
+#
+# U = [Vs             zeros(1, 6)
+#      zeros(6, 1)    Diagonal(ones(6))]
+#
+#
+# Q = [[C1 0; 0 R1]*d(Pb)     zeros(2, 3);
+#      zeros(2, 3)             [C2 0; 0 R2]*d(Sb)]*R_down([3,3])*d(St, 4)
+#
+# Q = simplifyArray(Q)
+#
+# #A
+# A = simplifyArray(Q*U*P)
+#
+# Vs = 2;
+# U_ins = [Vs  zeros(1, 6)
+#         zeros(6, 1)                     zeros(6, 6)]
+# #B
+# B = simplifyArray(Q*U_ins)
 
-Vs = -1;
 
-U = [Vs             zeros(1, 6)
-     zeros(6, 1)    Diagonal(ones(6))]
-
-
-Q = [[C1 0; 0 R1]*d(Pb)     zeros(2, 3);
-     zeros(2, 3)             [C2 0; 0 R2]*d(Sb)]*R_down([3,3])*d(St, 4)
-
-Q = simplifyArray(Q)
-
-#A
-A = simplifyArray(Q*U*P)
-
-Vs = 2;
-U_ins = [Vs  zeros(1, 6)
-        zeros(6, 1)                     zeros(6, 6)]
-#B
-B = simplifyArray(Q*U_ins)
-
-
-println(latexify(pretty_expr(A)))
-println(latexify(pretty_expr(B)))
+# println(latexify(pretty_expr(A)))
+# println(latexify(pretty_expr(B)))
