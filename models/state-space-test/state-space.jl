@@ -140,40 +140,47 @@ S_parallel(R_1, R_2, rho) = [0                                 R_2^(rho)/(R_1+R_
 # state-space matricies
 @parameters Q U P A B C;
 
-@variables Vs S1[0:2,0:2] P1[0:2, 0:2] S2[0:2, 0:2] R1 C1 R2 C2 V_in x y;
+@variables Vs S1[0:2,0:2] P1[0:2, 0:2] S2[0:2, 0:2] R_1 C_1 R_2 C_2 V_in x y;
 @parameters n;
 
-@variables R_R1 R_R2 R_C1 R_C2 T;
+@variables R1 R2 C1 C2 T;
 
-S1 = S_series(R_R1, 1/(1/(R_R2+T/(2*R_C2))+ 1/(T/(2*R_C1))), 1)
-P1 = S_parallel(R_C1, R_R2+T/(2*R_C2),  1)
-S2 = S_series(R_R2, T/(2*R_C2), 1)
+S1 = S_series(R1, 1/(1/(R2+T/(2*C2))+ 1/(T/(2*C1))), 1)
+P1 = S_parallel(C1, R2+T/(2*C2),  1)
+S2 = S_series(R2, T/(2*C2), 1)
 
 Vs = -1
 
-R1 = 0
-R2 = 0
-C1 = 1
-C2 = 1
+R_1 = 0
+R_2 = 0
+C_1 = 1
+C_2 = 1
 
-Pa = u(S2, 0)*[R2  0; 0 C2]
-Pb = u(P1, 2)*[C1    zeros(1, 2);
+Pa = u(S2, 0)*[R_2  0; 0 C_2]
+Pb = u(P1, 2)*[C_1    zeros(1, 2);
                 zeros(3 ,1)      Pa]
-Pc = u(S1, 4)*[R1    zeros(1, 3);
+Pc = u(S1, 4)*[R_1    zeros(1, 3);
         zeros(5, 1)      Pb]
 P = simplifyArray(Pc)
 
 println("Array P")
+println("Array P")
 
 println(latexify(pretty_expr(P)))
+println(julia2mathmaticaArray(P))
 
 U = [Vs             zeros(1, 6)
     zeros(6, 1)    Diagonal(ones(6))]
 
-Qa = [R2  0; 0 C2]*d(S2, 0)
-Qb = [  C1    zeros(1, 3);
+    println("Array U")
+
+    println(latexify(pretty_expr(U)))
+    println(julia2mathmaticaArray(U))
+
+Qa = [R_2  0; 0 C_2]*d(S2, 0)
+Qb = [  C_1    zeros(1, 3);
         zeros(2 ,1)      Qa]*d(P1, 2)
-Qc = [  R1    zeros(1, 5);
+Qc = [  R_1    zeros(1, 5);
         zeros(3 ,1)      Qb]*d(S1, 4)
 Q = simplifyArray(Qc)
 
@@ -182,10 +189,33 @@ println(latexify(pretty_expr(Q)))
 
 println(julia2mathmaticaArray(Q))
 #=
-{ { -0.0, -0.0, 0.0, 0.0, 0.0, 0.0, 0.0 }, { -1.0 * ((R_R1 + (((((0.5 * (R_C2 ^ -1) * T) + R_R2) ^ -1) + (2.0 * R_C1 * (T ^ -1))) ^ -1)) ^ -1) * (((((0.5 * (R_C2 ^ -1) * T) + R_R2) ^ -1) + (2.0 * R_C1 * (T ^ -1))) ^ -1), -1.0 * ((R_R1 + (((((0.5 * (R_C2 ^ -1) * T) + R_R2) ^ -1) + (2.0 * R_C1 * (T ^ -1))) ^ -1)) ^ -1) * (((((0.5 * (R_C2 ^ -1) * T) + R_R2) ^ -1) + (2.0 * R_C1 * (T ^ -1))) ^ -1), R_R1 * ((R_R1 + (((((0.5 * (R_C2 ^ -1) * T) + R_R2) ^ -1) + (2.0 * R_C1 * (T ^ -1))) ^ -1)) ^ -1), -1 * (((0.5 * (R_C2 ^ -1) * T) + R_C1 + R_R2) ^ -1) * R_C1, (((0.5 * (R_C2 ^ -1) * T) + R_C1 + R_R2) ^ -1) * R_C1, 0.0, 0.0 }, { -0.0, -0.0, 0.0, 0.0, 0.0, 0, 0.0 }, { 0.5 * (R_C2 ^ -1) * T * (((0.5 * (R_C2 ^ -1) * T) + R_R2) ^ -1) * ((R_R1 + (((((0.5 * (R_C2 ^ -1) * T) + R_R2) ^ -1) + (2.0 * R_C1 * (T ^ -1))) ^ -1)) ^ -1) * (((((0.5 * (R_C2 ^ -1) * T) + R_R2) ^ -1) + (2.0 * R_C1 * (T ^ -1))) ^ -1), 0.5 * (R_C2 ^ -1) * T * (((0.5 * (R_C2 ^ -1) * T) + R_R2) ^ -1) * ((R_R1 + (((((0.5 * (R_C2 ^ -1) * T) + R_R2) ^ -1) + (2.0 * R_C1 * (T ^ -1))) ^ -1)) ^ -1) * (((((0.5 * (R_C2 ^ -1) * T) + R_R2) ^ -1) + (2.0 * R_C1 * (T ^ -1))) ^ -1), -0.5 * (R_C2 ^ -1) * R_R1 * T * (((0.5 * (R_C2 ^ -1) * T) + R_R2) ^ -1) * ((R_R1 + (((((0.5 * (R_C2 ^ -1) * T) + R_R2) ^ -1) + (2.0 * R_C1 * (T ^ -1))) ^ -1)) ^ -1), -0.5 * (((0.5 * (R_C2 ^ -1) * T) + R_C1 + R_R2) ^ -1) * (R_C2 ^ -1) * T, 0.5 * (((0.5 * (R_C2 ^ -1) * T) + R_C1 + R_R2) ^ -1) * (R_C2 ^ -1) * T, -0.5 * (R_C2 ^ -1) * T * (((0.5 * (R_C2 ^ -1) * T) + R_R2) ^ -1), R_R2 * (((0.5 * (R_C2 ^ -1) * T) + R_R2) ^ -1) }  }
+{ { -0.0, -0.0, 0.0, 0.0, 0.0, 0.0, 0.0 }, { -1.0 * ((R1 + (((((0.5 * (C2 ^ -1) * T) + R2) ^ -1) + (2.0 * C1 * (T ^ -1))) ^ -1)) ^ -1) * (((((0.5 * (C2 ^ -1) * T) + R2) ^ -1) + (2.0 * C1 * (T ^ -1))) ^ -1), -1.0 * ((R1 + (((((0.5 * (C2 ^ -1) * T) + R2) ^ -1) + (2.0 * C1 * (T ^ -1))) ^ -1)) ^ -1) * (((((0.5 * (C2 ^ -1) * T) + R2) ^ -1) + (2.0 * C1 * (T ^ -1))) ^ -1), R1 * ((R1 + (((((0.5 * (C2 ^ -1) * T) + R2) ^ -1) + (2.0 * C1 * (T ^ -1))) ^ -1)) ^ -1), -1 * (((0.5 * (C2 ^ -1) * T) + C1 + R2) ^ -1) * C1, (((0.5 * (C2 ^ -1) * T) + C1 + R2) ^ -1) * C1, 0.0, 0.0 }, { -0.0, -0.0, 0.0, 0.0, 0.0, 0, 0.0 }, { 0.5 * (C2 ^ -1) * T * (((0.5 * (C2 ^ -1) * T) + R2) ^ -1) * ((R1 + (((((0.5 * (C2 ^ -1) * T) + R2) ^ -1) + (2.0 * C1 * (T ^ -1))) ^ -1)) ^ -1) * (((((0.5 * (C2 ^ -1) * T) + R2) ^ -1) + (2.0 * C1 * (T ^ -1))) ^ -1), 0.5 * (C2 ^ -1) * T * (((0.5 * (C2 ^ -1) * T) + R2) ^ -1) * ((R1 + (((((0.5 * (C2 ^ -1) * T) + R2) ^ -1) + (2.0 * C1 * (T ^ -1))) ^ -1)) ^ -1) * (((((0.5 * (C2 ^ -1) * T) + R2) ^ -1) + (2.0 * C1 * (T ^ -1))) ^ -1), -0.5 * (C2 ^ -1) * R1 * T * (((0.5 * (C2 ^ -1) * T) + R2) ^ -1) * ((R1 + (((((0.5 * (C2 ^ -1) * T) + R2) ^ -1) + (2.0 * C1 * (T ^ -1))) ^ -1)) ^ -1), -0.5 * (((0.5 * (C2 ^ -1) * T) + C1 + R2) ^ -1) * (C2 ^ -1) * T, 0.5 * (((0.5 * (C2 ^ -1) * T) + C1 + R2) ^ -1) * (C2 ^ -1) * T, -0.5 * (C2 ^ -1) * T * (((0.5 * (C2 ^ -1) * T) + R2) ^ -1), R2 * (((0.5 * (C2 ^ -1) * T) + R2) ^ -1) }  }
 =#
-
+println("Array A")
 A = simplifyArray(Q*U*P)
-println(latexify(pretty_expr(Q)))
+println(latexify(pretty_expr(A)))
 
 println(julia2mathmaticaArray(A))
+
+
+U_ins = [Vs  zeros(1, 6)
+        zeros(6, 1)                     zeros(6, 6)]
+#B
+B = simplifyArray(Q*U_ins)
+
+println(latexify(pretty_expr(B)))
+println(julia2mathmaticaArray(B))
+
+Ro = [zeros(3,3) zeros(3, 1);
+    zeros(1, 3)  1/2]
+C = Ro * (A +  Diagonal(ones(4)))
+C = simplifyArray(C)
+
+println(latexify(pretty_expr(C)))
+println(julia2mathmaticaArray(C))
+
+D = Ro * B
+D = simplifyArray(D)
+
+println(latexify(pretty_expr(D)))
+println(julia2mathmaticaArray(D))
